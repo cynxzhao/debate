@@ -35,7 +35,7 @@ class HomeTableViewController: UITableViewController {
                         for id in groupIDs {
                             if id == snap.key {
                                 let group = Group(snapshot: snap)
-                                self.groups.append(group!)
+                                self.groups.append(group!) 
                             }
                         }
                     }
