@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Fjq-9E-W3J">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--All News-->
+        <scene sceneID="meI-tw-bXO">
+            <objects>
+                <tableViewController id="Nox-7z-Dzz" customClass="AllNewsTableViewController" customModule="Debate" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="t1M-Cs-E0Q">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="uNn-ft-fIS">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uNn-ft-fIS" id="LfZ-KN-EOL">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="idK-fD-ta9" kind="show" identifier="toDetailedAllNews" id="UsQ-FM-bYJ"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Nox-7z-Dzz" id="Tke-uU-b2P"/>
+                            <outlet property="delegate" destination="Nox-7z-Dzz" id="wkU-5E-RPl"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="All News" id="Emg-2a-aD7"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k3F-br-LtZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1197.5999999999999" y="98.50074962518741"/>
+        </scene>
+        <!--Details-->
+        <scene sceneID="nJh-CC-CHL">
+            <objects>
+                <viewController title="Details" id="idK-fD-ta9" customClass="DetailedAllNewsViewController" customModule="Debate" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6VN-AB-tP2"/>
+                        <viewControllerLayoutGuide type="bottom" id="dpL-I7-e5u"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="p25-Ua-HST">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VkF-d8-ikq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-456" y="90"/>
+        </scene>
+        <!--Send News-->
+        <scene sceneID="BZi-dA-4Aa">
+            <objects>
+                <viewController title="Send News" id="sW2-yH-td0" customClass="SendNewsViewController" customModule="Debate" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gJp-Oc-lFP"/>
+                        <viewControllerLayoutGuide type="bottom" id="CXv-go-UgV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yRV-wz-g52">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FYq-bd-V6x" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="335" y="90"/>
+        </scene>
+        <!--All News-->
+        <scene sceneID="btH-Ln-Pbk">
+            <objects>
+                <navigationController title="All News" automaticallyAdjustsScrollViewInsets="NO" id="Fjq-9E-W3J" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="B8K-4F-ypj"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="upl-2s-xPy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Nox-7z-Dzz" kind="relationship" relationship="rootViewController" id="aah-oU-sKj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l89-zz-bl6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2136.8000000000002" y="98.50074962518741"/>
+        </scene>
+    </scenes>
+</document>

@@ -1,0 +1,6 @@
+framework module PPEventRegistryAPI {
+  umbrella header "PPEventRegistryAPI-umbrella.h"
+
+  export *
+  module * { export * }
+}

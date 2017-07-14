@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
+import Alamofire
+import SwiftyJSON
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +19,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        FirebaseApp.configure()
+        
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+        
+//        if let initialViewController = storyboard.instantiateInitialViewController() {
+//
+//            window?.rootViewController = initialViewController
+//
+//            window?.makeKeyAndVisible()
+//        }
+        
+        configureInitialRootViewController(for: window)
+
         return true
     }
 
@@ -44,3 +60,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension AppDelegate {
+    func configureInitialRootViewController(for window: UIWindow?) {
+        let defaults = UserDefaults.standard
+        
+        if Auth.auth().currentUser != nil,
+            let userData = defaults.object(forKey: Constants.UserDefaults.currentUser) as? Data,
+            let user = NSKeyedUnarchiver.unarchiveObject(with: userData) as? User {
+            
+            User.setCurrent(user)
+            print(Auth.auth().currentUser?.uid)
+            let storyboard = UIStoryboard(name: "Groups", bundle: nil)
+            
+            if let initialViewController = storyboard.instantiateInitialViewController() {
+                            window?.rootViewController = initialViewController
+                            window?.makeKeyAndVisible()
+            }
+        } else {
+            let storyboard = UIStoryboard(name: "Login", bundle: nil)
+            
+            if let initialViewController = storyboard.instantiateInitialViewController() {
+                            window?.rootViewController = initialViewController
+                            window?.makeKeyAndVisible()
+            }
+        }
+    }
+}

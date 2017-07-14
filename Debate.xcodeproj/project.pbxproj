@@ -7,21 +7,89 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C4848BCE8B6EDC648224929 /* Pods_Debate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EA512D19A7B5B2A2D07293 /* Pods_Debate.framework */; };
 		CA1ABDC61F1427EC00615629 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABDC51F1427EC00615629 /* AppDelegate.swift */; };
-		CA1ABDC81F1427EC00615629 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABDC71F1427EC00615629 /* ViewController.swift */; };
-		CA1ABDCB1F1427EC00615629 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA1ABDC91F1427EC00615629 /* Main.storyboard */; };
+		CA1ABDCB1F1427EC00615629 /* Groups.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA1ABDC91F1427EC00615629 /* Groups.storyboard */; };
 		CA1ABDCD1F1427EC00615629 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA1ABDCC1F1427EC00615629 /* Assets.xcassets */; };
 		CA1ABDD01F1427EC00615629 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA1ABDCE1F1427EC00615629 /* LaunchScreen.storyboard */; };
+		CA1ABDDD1F14289800615629 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA1ABDDC1F14289800615629 /* Login.storyboard */; };
+		CA1ABDE51F1428DB00615629 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA1ABDE41F1428DB00615629 /* Profile.storyboard */; };
+		CA1ABDE71F14291B00615629 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABDE61F14291B00615629 /* UserService.swift */; };
+		CA1ABDE91F14292900615629 /* GroupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABDE81F14292900615629 /* GroupService.swift */; };
+		CA1ABDEB1F14293900615629 /* NewsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABDEA1F14293900615629 /* NewsService.swift */; };
+		CA1ABDED1F14295500615629 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABDEC1F14295500615629 /* LoginViewController.swift */; };
+		CA1ABDF11F14299200615629 /* SentNewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABDF01F14299200615629 /* SentNewsTableViewController.swift */; };
+		CA1ABDF31F1429A400615629 /* PersonalArchivesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABDF21F1429A400615629 /* PersonalArchivesTableViewController.swift */; };
+		CA1ABDF51F1429AE00615629 /* AllNewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABDF41F1429AE00615629 /* AllNewsTableViewController.swift */; };
+		CA1ABDF71F1429C700615629 /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABDF61F1429C700615629 /* JoinViewController.swift */; };
+		CA1ABDF91F1429D200615629 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABDF81F1429D200615629 /* CreateViewController.swift */; };
+		CA1ABDFB1F1429E000615629 /* SearchMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABDFA1F1429E000615629 /* SearchMembersViewController.swift */; };
+		CA1ABDFD1F1429EA00615629 /* DetailedNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABDFC1F1429EA00615629 /* DetailedNewsViewController.swift */; };
+		CA1ABDFF1F142A1600615629 /* DetailedAllNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABDFE1F142A1600615629 /* DetailedAllNewsViewController.swift */; };
+		CA1ABE011F142A2100615629 /* SendNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABE001F142A2100615629 /* SendNewsViewController.swift */; };
+		CA1ABE031F142A3200615629 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABE021F142A3200615629 /* ProfileViewController.swift */; };
+		CA1ABE051F142A4700615629 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABE041F142A4700615629 /* EditProfileViewController.swift */; };
+		CA1ABE0E1F142BAD00615629 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABE0D1F142BAD00615629 /* User.swift */; };
+		CA1ABE101F142BBC00615629 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABE0F1F142BBC00615629 /* Group.swift */; };
+		CA1ABE121F142BC400615629 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABE111F142BC400615629 /* News.swift */; };
+		CA1ABE141F142BDD00615629 /* AllNewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABE131F142BDD00615629 /* AllNewsTableViewCell.swift */; };
+		CA1ABE161F142BEF00615629 /* SentNewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABE151F142BEF00615629 /* SentNewsTableViewCell.swift */; };
+		CA1ABE181F142C0F00615629 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABE171F142C0F00615629 /* HomeTableViewCell.swift */; };
+		CA1ABE1A1F142C1F00615629 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABE191F142C1F00615629 /* HomeTableViewController.swift */; };
+		CA1ABE1C1F1449AA00615629 /* GroupNews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA1ABE1B1F1449AA00615629 /* GroupNews.storyboard */; };
+		CA1ABE1F1F144B4B00615629 /* Archives.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA1ABE1D1F144B4B00615629 /* Archives.storyboard */; };
+		CA1ABE241F144C6600615629 /* AllNews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA1ABE221F144C6600615629 /* AllNews.storyboard */; };
+		CA1ABE261F14843600615629 /* DetailedArchivesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABE251F14843600615629 /* DetailedArchivesViewController.swift */; };
+		CA1ABE281F1485BC00615629 /* PersonalArchivesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABE271F1485BC00615629 /* PersonalArchivesTableViewCell.swift */; };
+		CA1ABE2C1F14862F00615629 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABE2B1F14862F00615629 /* WelcomeViewController.swift */; };
+		CA1ABE2E1F153CCB00615629 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA1ABE2D1F153CCB00615629 /* GoogleService-Info.plist */; };
+		CA1ABE4E1F16BE5E00615629 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABE4D1F16BE5E00615629 /* Constants.swift */; };
+		CA8DAE381F19352200EE210F /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DAE371F19352200EE210F /* SearchTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		72079F6E50679314E0A93F4E /* Pods-Debate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Debate.release.xcconfig"; path = "Pods/Target Support Files/Pods-Debate/Pods-Debate.release.xcconfig"; sourceTree = "<group>"; };
+		83EA512D19A7B5B2A2D07293 /* Pods_Debate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Debate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F906522CA82D363D6F53448 /* Pods-Debate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Debate.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Debate/Pods-Debate.debug.xcconfig"; sourceTree = "<group>"; };
 		CA1ABDC21F1427EC00615629 /* Debate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Debate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA1ABDC51F1427EC00615629 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CA1ABDC71F1427EC00615629 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CA1ABDCA1F1427EC00615629 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CA1ABDCA1F1427EC00615629 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Groups.storyboard; sourceTree = "<group>"; };
 		CA1ABDCC1F1427EC00615629 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA1ABDCF1F1427EC00615629 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CA1ABDD11F1427EC00615629 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA1ABDDC1F14289800615629 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		CA1ABDE41F1428DB00615629 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		CA1ABDE61F14291B00615629 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		CA1ABDE81F14292900615629 /* GroupService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupService.swift; sourceTree = "<group>"; };
+		CA1ABDEA1F14293900615629 /* NewsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsService.swift; sourceTree = "<group>"; };
+		CA1ABDEC1F14295500615629 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		CA1ABDF01F14299200615629 /* SentNewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentNewsTableViewController.swift; sourceTree = "<group>"; };
+		CA1ABDF21F1429A400615629 /* PersonalArchivesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalArchivesTableViewController.swift; sourceTree = "<group>"; };
+		CA1ABDF41F1429AE00615629 /* AllNewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllNewsTableViewController.swift; sourceTree = "<group>"; };
+		CA1ABDF61F1429C700615629 /* JoinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
+		CA1ABDF81F1429D200615629 /* CreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
+		CA1ABDFA1F1429E000615629 /* SearchMembersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchMembersViewController.swift; sourceTree = "<group>"; };
+		CA1ABDFC1F1429EA00615629 /* DetailedNewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedNewsViewController.swift; sourceTree = "<group>"; };
+		CA1ABDFE1F142A1600615629 /* DetailedAllNewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedAllNewsViewController.swift; sourceTree = "<group>"; };
+		CA1ABE001F142A2100615629 /* SendNewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendNewsViewController.swift; sourceTree = "<group>"; };
+		CA1ABE021F142A3200615629 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		CA1ABE041F142A4700615629 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		CA1ABE0D1F142BAD00615629 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CA1ABE0F1F142BBC00615629 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		CA1ABE111F142BC400615629 /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		CA1ABE131F142BDD00615629 /* AllNewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllNewsTableViewCell.swift; sourceTree = "<group>"; };
+		CA1ABE151F142BEF00615629 /* SentNewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentNewsTableViewCell.swift; sourceTree = "<group>"; };
+		CA1ABE171F142C0F00615629 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		CA1ABE191F142C1F00615629 /* HomeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
+		CA1ABE1B1F1449AA00615629 /* GroupNews.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GroupNews.storyboard; sourceTree = "<group>"; };
+		CA1ABE1E1F144B4B00615629 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Archives.storyboard; sourceTree = "<group>"; };
+		CA1ABE231F144C6600615629 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AllNews.storyboard; sourceTree = "<group>"; };
+		CA1ABE251F14843600615629 /* DetailedArchivesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedArchivesViewController.swift; sourceTree = "<group>"; };
+		CA1ABE271F1485BC00615629 /* PersonalArchivesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalArchivesTableViewCell.swift; sourceTree = "<group>"; };
+		CA1ABE2B1F14862F00615629 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		CA1ABE2D1F153CCB00615629 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CA1ABE4D1F16BE5E00615629 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		CA8DAE371F19352200EE210F /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +97,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C4848BCE8B6EDC648224929 /* Pods_Debate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E3C7D24C7840BE24789D135 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				83EA512D19A7B5B2A2D07293 /* Pods_Debate.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		834300C11DF44303531FC545 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8F906522CA82D363D6F53448 /* Pods-Debate.debug.xcconfig */,
+				72079F6E50679314E0A93F4E /* Pods-Debate.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		CA1ABDB91F1427EC00615629 = {
 			isa = PBXGroup;
 			children = (
 				CA1ABDC41F1427EC00615629 /* Debate */,
 				CA1ABDC31F1427EC00615629 /* Products */,
+				834300C11DF44303531FC545 /* Pods */,
+				4E3C7D24C7840BE24789D135 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +142,126 @@
 		CA1ABDC41F1427EC00615629 /* Debate */ = {
 			isa = PBXGroup;
 			children = (
+				CA1ABDDB1F14288200615629 /* Storyboards */,
+				CA1ABDD91F14284400615629 /* View Controllers */,
+				CA1ABDDA1F14287600615629 /* Services */,
+				CA1ABDD71F14282A00615629 /* Models */,
 				CA1ABDC51F1427EC00615629 /* AppDelegate.swift */,
-				CA1ABDC71F1427EC00615629 /* ViewController.swift */,
-				CA1ABDC91F1427EC00615629 /* Main.storyboard */,
 				CA1ABDCC1F1427EC00615629 /* Assets.xcassets */,
 				CA1ABDCE1F1427EC00615629 /* LaunchScreen.storyboard */,
 				CA1ABDD11F1427EC00615629 /* Info.plist */,
+				CA1ABE2D1F153CCB00615629 /* GoogleService-Info.plist */,
+				CA1ABE4D1F16BE5E00615629 /* Constants.swift */,
 			);
 			path = Debate;
+			sourceTree = "<group>";
+		};
+		CA1ABDD71F14282A00615629 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CA1ABE0D1F142BAD00615629 /* User.swift */,
+				CA1ABE0F1F142BBC00615629 /* Group.swift */,
+				CA1ABE111F142BC400615629 /* News.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		CA1ABDD91F14284400615629 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CA1ABE0A1F142ADB00615629 /* Profile */,
+				CA1ABE091F142AB200615629 /* AllNews */,
+				CA1ABE0B1F142B0800615629 /* Login */,
+				CA1ABE081F142A9800615629 /* GroupNews */,
+				CA1ABE061F142A6400615629 /* Groups */,
+				CA1ABE0C1F142B2200615629 /* Archives */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		CA1ABDDA1F14287600615629 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CA1ABDE61F14291B00615629 /* UserService.swift */,
+				CA1ABDE81F14292900615629 /* GroupService.swift */,
+				CA1ABDEA1F14293900615629 /* NewsService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		CA1ABDDB1F14288200615629 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				CA1ABDDC1F14289800615629 /* Login.storyboard */,
+				CA1ABDC91F1427EC00615629 /* Groups.storyboard */,
+				CA1ABE221F144C6600615629 /* AllNews.storyboard */,
+				CA1ABE1D1F144B4B00615629 /* Archives.storyboard */,
+				CA1ABE1B1F1449AA00615629 /* GroupNews.storyboard */,
+				CA1ABDE41F1428DB00615629 /* Profile.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		CA1ABE061F142A6400615629 /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+				CA1ABDF61F1429C700615629 /* JoinViewController.swift */,
+				CA1ABDF81F1429D200615629 /* CreateViewController.swift */,
+				CA1ABDFA1F1429E000615629 /* SearchMembersViewController.swift */,
+				CA1ABE171F142C0F00615629 /* HomeTableViewCell.swift */,
+				CA1ABE191F142C1F00615629 /* HomeTableViewController.swift */,
+				CA8DAE371F19352200EE210F /* SearchTableViewCell.swift */,
+			);
+			name = Groups;
+			sourceTree = "<group>";
+		};
+		CA1ABE081F142A9800615629 /* GroupNews */ = {
+			isa = PBXGroup;
+			children = (
+				CA1ABDF01F14299200615629 /* SentNewsTableViewController.swift */,
+				CA1ABDFC1F1429EA00615629 /* DetailedNewsViewController.swift */,
+				CA1ABE151F142BEF00615629 /* SentNewsTableViewCell.swift */,
+			);
+			name = GroupNews;
+			sourceTree = "<group>";
+		};
+		CA1ABE091F142AB200615629 /* AllNews */ = {
+			isa = PBXGroup;
+			children = (
+				CA1ABDF41F1429AE00615629 /* AllNewsTableViewController.swift */,
+				CA1ABDFE1F142A1600615629 /* DetailedAllNewsViewController.swift */,
+				CA1ABE001F142A2100615629 /* SendNewsViewController.swift */,
+				CA1ABE131F142BDD00615629 /* AllNewsTableViewCell.swift */,
+			);
+			name = AllNews;
+			sourceTree = "<group>";
+		};
+		CA1ABE0A1F142ADB00615629 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				CA1ABE021F142A3200615629 /* ProfileViewController.swift */,
+				CA1ABE041F142A4700615629 /* EditProfileViewController.swift */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
+		CA1ABE0B1F142B0800615629 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				CA1ABDEC1F14295500615629 /* LoginViewController.swift */,
+				CA1ABE2B1F14862F00615629 /* WelcomeViewController.swift */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		CA1ABE0C1F142B2200615629 /* Archives */ = {
+			isa = PBXGroup;
+			children = (
+				CA1ABDF21F1429A400615629 /* PersonalArchivesTableViewController.swift */,
+				CA1ABE251F14843600615629 /* DetailedArchivesViewController.swift */,
+				CA1ABE271F1485BC00615629 /* PersonalArchivesTableViewCell.swift */,
+			);
+			name = Archives;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +271,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA1ABDD41F1427EC00615629 /* Build configuration list for PBXNativeTarget "Debate" */;
 			buildPhases = (
+				046C6B0CD34F8CEB0204D03E /* [CP] Check Pods Manifest.lock */,
 				CA1ABDBE1F1427EC00615629 /* Sources */,
 				CA1ABDBF1F1427EC00615629 /* Frameworks */,
 				CA1ABDC01F1427EC00615629 /* Resources */,
+				A8204D6EDAD584155A18EDBB /* [CP] Embed Pods Frameworks */,
+				0BB60C658CA7CA96B7B8A44E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -96,6 +299,7 @@
 				TargetAttributes = {
 					CA1ABDC11F1427EC00615629 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = HVAK544U3E;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -123,33 +327,113 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA1ABDDD1F14289800615629 /* Login.storyboard in Resources */,
 				CA1ABDD01F1427EC00615629 /* LaunchScreen.storyboard in Resources */,
+				CA1ABE2E1F153CCB00615629 /* GoogleService-Info.plist in Resources */,
 				CA1ABDCD1F1427EC00615629 /* Assets.xcassets in Resources */,
-				CA1ABDCB1F1427EC00615629 /* Main.storyboard in Resources */,
+				CA1ABE1C1F1449AA00615629 /* GroupNews.storyboard in Resources */,
+				CA1ABE1F1F144B4B00615629 /* Archives.storyboard in Resources */,
+				CA1ABDCB1F1427EC00615629 /* Groups.storyboard in Resources */,
+				CA1ABDE51F1428DB00615629 /* Profile.storyboard in Resources */,
+				CA1ABE241F144C6600615629 /* AllNews.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		046C6B0CD34F8CEB0204D03E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		0BB60C658CA7CA96B7B8A44E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Debate/Pods-Debate-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A8204D6EDAD584155A18EDBB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Debate/Pods-Debate-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CA1ABDBE1F1427EC00615629 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA1ABDC81F1427EC00615629 /* ViewController.swift in Sources */,
+				CA1ABE2C1F14862F00615629 /* WelcomeViewController.swift in Sources */,
+				CA1ABE1A1F142C1F00615629 /* HomeTableViewController.swift in Sources */,
+				CA1ABDED1F14295500615629 /* LoginViewController.swift in Sources */,
+				CA1ABDFB1F1429E000615629 /* SearchMembersViewController.swift in Sources */,
+				CA1ABDFD1F1429EA00615629 /* DetailedNewsViewController.swift in Sources */,
+				CA1ABE101F142BBC00615629 /* Group.swift in Sources */,
+				CA1ABDEB1F14293900615629 /* NewsService.swift in Sources */,
+				CA1ABE031F142A3200615629 /* ProfileViewController.swift in Sources */,
+				CA1ABE141F142BDD00615629 /* AllNewsTableViewCell.swift in Sources */,
+				CA1ABE0E1F142BAD00615629 /* User.swift in Sources */,
+				CA1ABDF71F1429C700615629 /* JoinViewController.swift in Sources */,
+				CA1ABE051F142A4700615629 /* EditProfileViewController.swift in Sources */,
+				CA1ABE161F142BEF00615629 /* SentNewsTableViewCell.swift in Sources */,
+				CA8DAE381F19352200EE210F /* SearchTableViewCell.swift in Sources */,
+				CA1ABDFF1F142A1600615629 /* DetailedAllNewsViewController.swift in Sources */,
+				CA1ABE281F1485BC00615629 /* PersonalArchivesTableViewCell.swift in Sources */,
+				CA1ABDF31F1429A400615629 /* PersonalArchivesTableViewController.swift in Sources */,
+				CA1ABDE71F14291B00615629 /* UserService.swift in Sources */,
 				CA1ABDC61F1427EC00615629 /* AppDelegate.swift in Sources */,
+				CA1ABDF51F1429AE00615629 /* AllNewsTableViewController.swift in Sources */,
+				CA1ABE181F142C0F00615629 /* HomeTableViewCell.swift in Sources */,
+				CA1ABDF91F1429D200615629 /* CreateViewController.swift in Sources */,
+				CA1ABE011F142A2100615629 /* SendNewsViewController.swift in Sources */,
+				CA1ABE121F142BC400615629 /* News.swift in Sources */,
+				CA1ABDF11F14299200615629 /* SentNewsTableViewController.swift in Sources */,
+				CA1ABDE91F14292900615629 /* GroupService.swift in Sources */,
+				CA1ABE261F14843600615629 /* DetailedArchivesViewController.swift in Sources */,
+				CA1ABE4E1F16BE5E00615629 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		CA1ABDC91F1427EC00615629 /* Main.storyboard */ = {
+		CA1ABDC91F1427EC00615629 /* Groups.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				CA1ABDCA1F1427EC00615629 /* Base */,
 			);
-			name = Main.storyboard;
+			name = Groups.storyboard;
 			sourceTree = "<group>";
 		};
 		CA1ABDCE1F1427EC00615629 /* LaunchScreen.storyboard */ = {
@@ -158,6 +442,22 @@
 				CA1ABDCF1F1427EC00615629 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		CA1ABE1D1F144B4B00615629 /* Archives.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CA1ABE1E1F144B4B00615629 /* Base */,
+			);
+			name = Archives.storyboard;
+			sourceTree = "<group>";
+		};
+		CA1ABE221F144C6600615629 /* AllNews.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CA1ABE231F144C6600615629 /* Base */,
+			);
+			name = AllNews.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -258,24 +558,32 @@
 		};
 		CA1ABDD51F1427EC00615629 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F906522CA82D363D6F53448 /* Pods-Debate.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = HVAK544U3E;
 				INFOPLIST_FILE = Debate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.makeschool.Debate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		CA1ABDD61F1427EC00615629 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 72079F6E50679314E0A93F4E /* Pods-Debate.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = HVAK544U3E;
 				INFOPLIST_FILE = Debate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.makeschool.Debate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -299,6 +607,7 @@
 				CA1ABDD61F1427EC00615629 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
