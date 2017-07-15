@@ -13,6 +13,7 @@ import Firebase
 class SearchAllTableViewController: UITableViewController {
 
     var users = [User]()
+    var newMember : User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +37,6 @@ class SearchAllTableViewController: UITableViewController {
                 self.users.append(user!)
             }
             self.tableView.reloadData()
-            print(self.users)
         })
     }
 
@@ -67,6 +67,29 @@ class SearchAllTableViewController: UITableViewController {
         cell.usernameLabel.text = user.username
         
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            if identifier == "toMembers" {
+                
+                // NotificationCenter.default.post(name: Notification.Name(rawValue: "added"), object: self)
+                // 1
+                let indexPath = tableView.indexPathForSelectedRow!
+                // 2
+                let user: User
+                // if searchController.isActive && searchController.searchBar.text != "" {
+                 //   user = filteredUsers[indexPath.row]
+                //} else {
+                    user = users[indexPath.row]
+                // }
+                // 3
+                let membersTableViewController = segue.destination as! MembersTableViewController
+                // 4
+                membersTableViewController.user = user
+                
+            }
+        }
     }
     
     /*

@@ -15,10 +15,9 @@ class CreateViewController: UIViewController {
     @IBOutlet weak var groupNameTextField: UITextField!
     
     var userSet: Set<String> = [User.current.username]
-    
+    var user : User?
     var group : Group?
     var users : [String]?
-    var user : User?
     
     @IBAction func screenTapped(_ sender: UITapGestureRecognizer) {
         self.view.endEditing(true)

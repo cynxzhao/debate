@@ -12,12 +12,22 @@ import FirebaseDatabase
 class MembersTableViewController: UITableViewController {
 
     var group : Group?
-    
-    var users = [User]()
+    var users = [String]()
+    var user : User?
+    var userSet = Set<String>()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let ref = Database.database().reference().child("groups")
+        // store all group usernames into an array by comparing the name of the group, and then getting the right groupName and getting the users in that group
+        
+        // convert the array into a Set and store in userSet
+        
+        if let user = user {
+            userSet.insert(user.username)
+        }
+        users = Array(userSet)
+        self.tableView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -48,7 +58,7 @@ class MembersTableViewController: UITableViewController {
         // 2
         let user = users[row]
         
-        cell.usernameLabel.text = user.username
+        cell.usernameLabel.text = user
         
         return cell
     }
