@@ -21,7 +21,6 @@
 		CA1ABDF11F14299200615629 /* SentNewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABDF01F14299200615629 /* SentNewsTableViewController.swift */; };
 		CA1ABDF31F1429A400615629 /* PersonalArchivesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABDF21F1429A400615629 /* PersonalArchivesTableViewController.swift */; };
 		CA1ABDF51F1429AE00615629 /* AllNewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABDF41F1429AE00615629 /* AllNewsTableViewController.swift */; };
-		CA1ABDF71F1429C700615629 /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABDF61F1429C700615629 /* JoinViewController.swift */; };
 		CA1ABDF91F1429D200615629 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABDF81F1429D200615629 /* CreateViewController.swift */; };
 		CA1ABDFB1F1429E000615629 /* SearchMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABDFA1F1429E000615629 /* SearchMembersViewController.swift */; };
 		CA1ABDFD1F1429EA00615629 /* DetailedNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABDFC1F1429EA00615629 /* DetailedNewsViewController.swift */; };
@@ -45,6 +44,11 @@
 		CA1ABE2E1F153CCB00615629 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA1ABE2D1F153CCB00615629 /* GoogleService-Info.plist */; };
 		CA1ABE4E1F16BE5E00615629 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABE4D1F16BE5E00615629 /* Constants.swift */; };
 		CA8DAE381F19352200EE210F /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DAE371F19352200EE210F /* SearchTableViewCell.swift */; };
+		CA8DAE3A1F1951E300EE210F /* CreateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DAE391F1951E300EE210F /* CreateTableViewCell.swift */; };
+		CA8DAE3C1F195E9200EE210F /* MembersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DAE3B1F195E9200EE210F /* MembersTableViewController.swift */; };
+		CA8DAE3E1F195EAE00EE210F /* SearchAllTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DAE3D1F195EAE00EE210F /* SearchAllTableViewController.swift */; };
+		CA8DAE401F195F2200EE210F /* MembersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DAE3F1F195F2200EE210F /* MembersTableViewCell.swift */; };
+		CA8DAE421F195F2D00EE210F /* SearchAllTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DAE411F195F2D00EE210F /* SearchAllTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,7 +70,6 @@
 		CA1ABDF01F14299200615629 /* SentNewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentNewsTableViewController.swift; sourceTree = "<group>"; };
 		CA1ABDF21F1429A400615629 /* PersonalArchivesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalArchivesTableViewController.swift; sourceTree = "<group>"; };
 		CA1ABDF41F1429AE00615629 /* AllNewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllNewsTableViewController.swift; sourceTree = "<group>"; };
-		CA1ABDF61F1429C700615629 /* JoinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
 		CA1ABDF81F1429D200615629 /* CreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
 		CA1ABDFA1F1429E000615629 /* SearchMembersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchMembersViewController.swift; sourceTree = "<group>"; };
 		CA1ABDFC1F1429EA00615629 /* DetailedNewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedNewsViewController.swift; sourceTree = "<group>"; };
@@ -90,6 +93,11 @@
 		CA1ABE2D1F153CCB00615629 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CA1ABE4D1F16BE5E00615629 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CA8DAE371F19352200EE210F /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		CA8DAE391F1951E300EE210F /* CreateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTableViewCell.swift; sourceTree = "<group>"; };
+		CA8DAE3B1F195E9200EE210F /* MembersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MembersTableViewController.swift; sourceTree = "<group>"; };
+		CA8DAE3D1F195EAE00EE210F /* SearchAllTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchAllTableViewController.swift; sourceTree = "<group>"; };
+		CA8DAE3F1F195F2200EE210F /* MembersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MembersTableViewCell.swift; sourceTree = "<group>"; };
+		CA8DAE411F195F2D00EE210F /* SearchAllTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchAllTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,12 +213,12 @@
 		CA1ABE061F142A6400615629 /* Groups */ = {
 			isa = PBXGroup;
 			children = (
-				CA1ABDF61F1429C700615629 /* JoinViewController.swift */,
 				CA1ABDF81F1429D200615629 /* CreateViewController.swift */,
 				CA1ABDFA1F1429E000615629 /* SearchMembersViewController.swift */,
 				CA1ABE171F142C0F00615629 /* HomeTableViewCell.swift */,
 				CA1ABE191F142C1F00615629 /* HomeTableViewController.swift */,
 				CA8DAE371F19352200EE210F /* SearchTableViewCell.swift */,
+				CA8DAE391F1951E300EE210F /* CreateTableViewCell.swift */,
 			);
 			name = Groups;
 			sourceTree = "<group>";
@@ -221,6 +229,10 @@
 				CA1ABDF01F14299200615629 /* SentNewsTableViewController.swift */,
 				CA1ABDFC1F1429EA00615629 /* DetailedNewsViewController.swift */,
 				CA1ABE151F142BEF00615629 /* SentNewsTableViewCell.swift */,
+				CA8DAE3B1F195E9200EE210F /* MembersTableViewController.swift */,
+				CA8DAE3D1F195EAE00EE210F /* SearchAllTableViewController.swift */,
+				CA8DAE3F1F195F2200EE210F /* MembersTableViewCell.swift */,
+				CA8DAE411F195F2D00EE210F /* SearchAllTableViewCell.swift */,
 			);
 			name = GroupNews;
 			sourceTree = "<group>";
@@ -403,8 +415,9 @@
 				CA1ABDEB1F14293900615629 /* NewsService.swift in Sources */,
 				CA1ABE031F142A3200615629 /* ProfileViewController.swift in Sources */,
 				CA1ABE141F142BDD00615629 /* AllNewsTableViewCell.swift in Sources */,
+				CA8DAE421F195F2D00EE210F /* SearchAllTableViewCell.swift in Sources */,
+				CA8DAE3A1F1951E300EE210F /* CreateTableViewCell.swift in Sources */,
 				CA1ABE0E1F142BAD00615629 /* User.swift in Sources */,
-				CA1ABDF71F1429C700615629 /* JoinViewController.swift in Sources */,
 				CA1ABE051F142A4700615629 /* EditProfileViewController.swift in Sources */,
 				CA1ABE161F142BEF00615629 /* SentNewsTableViewCell.swift in Sources */,
 				CA8DAE381F19352200EE210F /* SearchTableViewCell.swift in Sources */,
@@ -416,6 +429,9 @@
 				CA1ABDF51F1429AE00615629 /* AllNewsTableViewController.swift in Sources */,
 				CA1ABE181F142C0F00615629 /* HomeTableViewCell.swift in Sources */,
 				CA1ABDF91F1429D200615629 /* CreateViewController.swift in Sources */,
+				CA8DAE3C1F195E9200EE210F /* MembersTableViewController.swift in Sources */,
+				CA8DAE401F195F2200EE210F /* MembersTableViewCell.swift in Sources */,
+				CA8DAE3E1F195EAE00EE210F /* SearchAllTableViewController.swift in Sources */,
 				CA1ABE011F142A2100615629 /* SendNewsViewController.swift in Sources */,
 				CA1ABE121F142BC400615629 /* News.swift in Sources */,
 				CA1ABDF11F14299200615629 /* SentNewsTableViewController.swift in Sources */,
@@ -564,6 +580,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = HVAK544U3E;
 				INFOPLIST_FILE = Debate/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.makeschool.Debate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -580,6 +597,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = HVAK544U3E;
 				INFOPLIST_FILE = Debate/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.makeschool.Debate;
 				PRODUCT_NAME = "$(TARGET_NAME)";

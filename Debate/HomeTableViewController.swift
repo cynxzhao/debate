@@ -14,7 +14,6 @@ class HomeTableViewController: UITableViewController {
     var groups = [Group]()
     
     override func viewWillAppear(_ animated: Bool) {
-        print("will appear")
         super.viewWillAppear(animated)
         actOnViewController()
     }
@@ -48,7 +47,6 @@ class HomeTableViewController: UITableViewController {
     }
     
     override func viewDidLoad() {
-        //print("didload")
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(HomeTableViewController.actOnViewController), name: NSNotification.Name(rawValue: "uploaded"), object: nil)
 
@@ -88,7 +86,6 @@ class HomeTableViewController: UITableViewController {
     //}
     
     override func viewDidDisappear(_ animated: Bool) {
-        print("disappear")
         self.groups = []
     }
     
@@ -119,7 +116,7 @@ class HomeTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
-            if identifier == "unwindToListCreateViewController" {
+            if identifier == "toGroups" {
                 // 1
                 let indexPath = tableView.indexPathForSelectedRow!
                 // 2
@@ -127,7 +124,7 @@ class HomeTableViewController: UITableViewController {
                 // 3
                 let SentNewsTableViewController = segue.destination as! SentNewsTableViewController
                 // 4
-                SentNewsTableViewController.group = group.groupName
+                SentNewsTableViewController.group = group
             }
         }
     }

@@ -12,10 +12,9 @@ import FirebaseDatabase
 class SearchMembersViewController: UIViewController {
 
     var users = [User]()
+    var filteredUsers = [User]()
     
-    @IBAction func userAdded(_ sender: UIButton) {
-        
-    }
+    let searchController = UISearchController(searchResultsController: nil)
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -23,31 +22,63 @@ class SearchMembersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchController.searchResultsUpdater = self as! UISearchResultsUpdating
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
+        
         tableView.delegate = self
         tableView.dataSource = self
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        print ("appear")
-        super.viewWillAppear(animated)
+    func filterContentForSearchText(searchText: String, scope: String = "All") {
+        filteredUsers = users.filter { user in
+            return user.username.lowercased().contains(searchText.lowercased())
+        }
         
+        tableView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+//        let ref = Database.database().reference().child("users")
+//        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+//            guard let users = snapshot.children.allObjects as? [User]
+//                else {return}
+//                let ref4 = Database.database().reference().child("groups")
+//                ref4.observeSingleEvent(of: .value, with: { (snap4) in
+//                    guard let snap4 = snap4.children.allObjects as? [String]
+//                        else {return}
+//                    //print(snapshot[0])
+//                        for user in users {
+//                            for snap in snap4 {
+//                                if snap == user.username {
+//                                    let user = User(snapshot: snapshot)
+//                                    self.users.append(user!)
+//                                    }
+//                                }
+//                            }
+//                    self.tableView.reloadData()
+//                    print(self.users)
+//                        })
+//                })
         let ref = Database.database().reference().child("users")
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
-                    guard let snapshot = snapshot.children.allObjects as? [DataSnapshot]
-                        else { return }
-                    //print(snapshot[0])
-                    for snap in snapshot {
-                                let user = User(snapshot: snap)
-                                self.users.append(user!)
-                            }
-                    self.tableView.reloadData()
-                    print(self.users)
-                })
+            guard let snapshot = snapshot.children.allObjects as? [DataSnapshot]
+                else { return }
+            //print(snapshot[0])
+            for snap in snapshot {
+                let user = User(snapshot: snap)
+                self.users.append(user!)
             }
+            self.tableView.reloadData()
+        })
+        
+    }
 
     override func viewDidDisappear(_ animated: Bool) {
-        print("disappear")
         self.users = []
     }
     
@@ -59,10 +90,17 @@ class SearchMembersViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
             if identifier == "toCreate" {
+                
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "added"), object: self)
                 // 1
                 let indexPath = tableView.indexPathForSelectedRow!
                 // 2
-                let user = users[indexPath.row]
+                let user: User
+                if searchController.isActive && searchController.searchBar.text != "" {
+                    user = filteredUsers[indexPath.row]
+                } else {
+                    user = users[indexPath.row]
+                }
                 // 3
                 let createViewController = segue.destination as! CreateViewController
                 // 4
@@ -76,7 +114,9 @@ class SearchMembersViewController: UIViewController {
 extension SearchMembersViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(users.count)
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return filteredUsers.count
+        }
         return users.count
     }
     
@@ -84,24 +124,34 @@ extension SearchMembersViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchTableViewCell", for: indexPath) as! SearchTableViewCell
         
-        // 1
-        let row = indexPath.row
-        
-        // 2
-        let user = users[row]
+        var user : User
+        if searchController.isActive && searchController.searchBar.text != "" {
+            user = filteredUsers[indexPath.row]
+        } else {
+            user = users[indexPath.row]
+        }
         
         cell.usernameLabel.text = user.username
         cell.nameLabel.text = user.name
         
         return cell
     }
+
 }
 
     extension SearchMembersViewController: UITableViewDelegate {
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-           return 40
+           return 60
     }
 }
+
+extension SearchMembersViewController : UISearchResultsUpdating {
+
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchText: searchController.searchBar.text!)
+    }
+}
+
     /*
     // MARK: - Navigation
 

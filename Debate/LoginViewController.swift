@@ -39,23 +39,31 @@ class LoginViewController: UIViewController {
         let aboutMe = aboutMeTextField.text, !aboutMe.isEmpty
             else { return }
         
-        UserService.create(firUser, username: username, name: name, aboutMe: aboutMe) { (user) in
-            guard let user = user else {
-                return
-            }
-            
-            User.setCurrent(user, writeToUserDefaults: true)
-
+        let ref = Database.database().reference()
         
-//            let storyboard = UIStoryboard(name: "Groups", bundle: nil)
-//            
-//            if let initialViewController = storyboard.instantiateInitialViewController() {
-//                self.view.window?.rootViewController = initialViewController
-//                self.view.window?.makeKeyAndVisible()
-//            }
-            
-            self.performSegue(withIdentifier: "toGroups", sender: nil)
+        var usernameTaken = false
+        ref.child("users").queryOrdered(byChild: "username").queryEqual(toValue: username).observeSingleEvent(of: .value, with: { snapshot in
+            if snapshot.exists(){
+                usernameTaken = true
+                let alert = UIAlertController(title: "Error", message: "Username already exists", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }else{
+                usernameTaken = false
+                UserService.create(firUser, username: username, name: name, aboutMe: aboutMe) { (user) in
+                    guard let user = user else {
+                        return
+                    }
+                    
+                    User.setCurrent(user, writeToUserDefaults: true)
+                    self.performSegue(withIdentifier: "toGroups", sender: nil)
+                }
+            }
+        }) { error in
+            print(error.localizedDescription)
         }
+        
+        
     }
     /*
     // MARK: - Navigation
@@ -66,5 +74,9 @@ class LoginViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-        
+    
+    @IBAction func screenTapped(_ sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+
+    }
 }

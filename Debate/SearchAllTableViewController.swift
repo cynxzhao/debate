@@ -1,16 +1,18 @@
 //
-//  SentNewsTableViewController.swift
+//  SearchAllTableViewController.swift
 //  Debate
 //
-//  Created by Cindy Zhao on 7/10/17.
+//  Created by Cindy Zhao on 7/14/17.
 //  Copyright © 2017 Make School. All rights reserved.
 //
 
 import UIKit
+import FirebaseDatabase
+import Firebase
 
-class SentNewsTableViewController: UITableViewController {
+class SearchAllTableViewController: UITableViewController {
 
-    var group : Group?
+    var users = [User]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,37 +23,52 @@ class SentNewsTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let ref = Database.database().reference().child("users")
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let snapshot = snapshot.children.allObjects as? [DataSnapshot]
+                else { return }
+            //print(snapshot[0])
+            for snap in snapshot {
+                let user = User(snapshot: snap)
+                self.users.append(user!)
+            }
+            self.tableView.reloadData()
+            print(self.users)
+        })
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+    override func viewDidDisappear(_ animated: Bool) {
+        self.users = []
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let identifier = segue.identifier {
-            if identifier == "toMembersList" {
-                // 1
-                let indexPath = tableView.indexPathForSelectedRow!
-                // 3
-                let MembersTableViewController = segue.destination as! MembersTableViewController
-                // 4
-                MembersTableViewController.group = group
-            }
-        }
-    }
+    // MARK: - Table view data source
 
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return users.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "searchAllTableViewCell", for: indexPath) as! SearchAllTableViewCell
+        
+        // 1
+        let row = indexPath.row
+        
+        // 2
+        let user = users[row]
+        
+        cell.usernameLabel.text = user.username
+        
+        return cell
+    }
+    
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
