@@ -116,7 +116,7 @@ class HomeTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
-            if identifier == "toGroups" {
+            if identifier == "toGroupNews" {
                 // 1
                 let indexPath = tableView.indexPathForSelectedRow!
                 // 2

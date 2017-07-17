@@ -123,6 +123,9 @@ extension CreateViewController: UITableViewDataSource {
 extension CreateViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            let row = indexPath.row
+            let user = users?[row]
+            userSet.remove(user!)
             users!.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.automatic)
         }

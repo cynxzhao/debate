@@ -16,6 +16,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var aboutMeLabel: UILabel!
     
+    
     @IBAction func logOutTapped(_ sender: UIBarButtonItem) {
         
         if Auth.auth().currentUser != nil {
@@ -31,6 +32,13 @@ class ProfileViewController: UIViewController {
             print(error.localizedDescription)
         }
     }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        nameLabel.text = User.current.name
+        usernameLabel.text = User.current.username
+        aboutMeLabel.text = User.current.aboutMe
     }
     
     override func viewDidLoad() {

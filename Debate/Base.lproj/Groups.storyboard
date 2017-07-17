@@ -44,7 +44,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="JSj-r8-2Gk" kind="show" identifier="toSearchMembers" id="Vx8-6a-LFI"/>
+                                    <segue destination="JSj-r8-2Gk" kind="show" identifier="toSearchMembers" id="YNe-UB-cYW"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Pu-Qo-fsj">
@@ -133,7 +133,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="f1q-ig-yPs">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="545"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search by username" id="8hF-mf-iPX">
@@ -165,10 +165,11 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <gestureRecognizers/>
                                         <connections>
                                             <outlet property="nameLabel" destination="qAD-sa-S3p" id="MGb-Vu-Q4F"/>
                                             <outlet property="usernameLabel" destination="O6e-4c-Dag" id="x16-N2-JoQ"/>
-                                            <segue destination="Kgp-vd-yRk" kind="unwind" identifier="toCreate" unwindAction="unwindToListCreateViewController:" id="R9M-ka-nOJ"/>
+                                            <segue destination="Kgp-vd-yRk" kind="unwind" identifier="toCreate" unwindAction="unwindToListCreateViewController:" id="T8A-Vh-P4P"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

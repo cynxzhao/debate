@@ -12,6 +12,10 @@ class SentNewsTableViewController: UITableViewController {
 
     var group : Group?
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -43,7 +47,7 @@ class SentNewsTableViewController: UITableViewController {
         if let identifier = segue.identifier {
             if identifier == "toMembersList" {
                 // 1
-                let indexPath = tableView.indexPathForSelectedRow!
+//                let indexPath = tableView.indexPathForSelectedRow!
                 // 3
                 let MembersTableViewController = segue.destination as! MembersTableViewController
                 // 4

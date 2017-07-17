@@ -18,16 +18,79 @@ class MembersTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        var key: String = ""
+        
+        // retrieves users in group clicked
         let ref = Database.database().reference().child("groups")
-        // store all group usernames into an array by comparing the name of the group, and then getting the right groupName and getting the users in that group
+        ref.observe(.value, with: { (snapshot) in
+        guard let snapshot = snapshot.children.allObjects as? [DataSnapshot]
+            else { return }
+            for snap in snapshot {
+                let value = snap.value as? NSDictionary
+                if value?["groupName"] as? String == self.group?.groupName {
+                    
+                    key = snap.key
+                    print(key)
+                        
+                    self.users = (value?["users"] as? [String])!
+                    
+                    self.userSet = Set(self.users)
+                    
+                    // adds new user to list
+                    if let user = self.user {
+                        self.userSet.insert(user.username)
+                    }
+                    
+                    self.users = Array(self.userSet)
+                    //print ("users: \(self.users)")
+                    self.tableView.reloadData()
+
+//                    ref.observe(.value, with: { (snapshot) in
+//                        guard let snapshot = snapshot.children.allObjects as? [DataSnapshot]
+//                            else { return }
+//                        for snap in snapshot {
+//                            let value = snap.value as? NSDictionary
+//                            if value?["groupName"] as? String == self.group?.groupName {
+// //                               value?.setValue(self.users, forKey: "users")
+//                                print ("hi")
+//                                print(self.users)
+//                                value?.setValuesForKeys(["users": self.users])
+//                            }
+//                        }
+//                    })
+                    let ref1 = Database.database().reference().child("groups").child(key)
+                    //let attribute = ["users" : self.users]
+                    ref1.updateChildValues(["users" : self.users])
+
+                }
+            }
+        })
         
-        // convert the array into a Set and store in userSet
         
-        if let user = user {
-            userSet.insert(user.username)
-        }
-        users = Array(userSet)
-        self.tableView.reloadData()
+        
+//        userSet = Set(self.users)
+
+//        if let user = user {
+//            userSet.insert(user.username)
+//        }
+        
+//        self.users = Array(userSet)
+        
+//        ref.observe(.value, with: { (snapshot) in
+//            guard let snapshot = snapshot.children.allObjects as? [DataSnapshot]
+//                else { return }
+//            for snap in snapshot {
+//                let value = snap.value as? NSDictionary
+//                if value?["groupName"] as? String == self.group?.groupName {
+//                    value?.setValue(self.users, forKey: "users")
+//                    print ("hi")
+//                }
+//            }
+//        })
+        
+        //self.tableView.reloadData()
+        
     }
     
     override func viewDidLoad() {

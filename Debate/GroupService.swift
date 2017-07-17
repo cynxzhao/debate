@@ -14,6 +14,7 @@ import FirebaseDatabase
 struct GroupService {
     
     static var allGroupIDs = [String]()
+    // need to add a function here that goes through "users" under the group and goes through all users to see if their usernames match and adds the group ID to their "groups"
     
     static func create(_ firUser: FIRUser, groupName: String, users: [String], completion: @escaping (User?) -> Void) {
 
