@@ -40,30 +40,16 @@ class SearchMembersViewController: UIViewController {
         tableView.reloadData()
     }
     
+    func tableView(_ tableView: UITableView,
+                   didSelectRowAt indexPath: IndexPath){
+        self.navigationController?.popViewController(animated: true)
+        self.performSegue(withIdentifier: "toCreate", sender: nil)
+    }
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-//        let ref = Database.database().reference().child("users")
-//        ref.observeSingleEvent(of: .value, with: { (snapshot) in
-//            guard let users = snapshot.children.allObjects as? [User]
-//                else {return}
-//                let ref4 = Database.database().reference().child("groups")
-//                ref4.observeSingleEvent(of: .value, with: { (snap4) in
-//                    guard let snap4 = snap4.children.allObjects as? [String]
-//                        else {return}
-//                    //print(snapshot[0])
-//                        for user in users {
-//                            for snap in snap4 {
-//                                if snap == user.username {
-//                                    let user = User(snapshot: snapshot)
-//                                    self.users.append(user!)
-//                                    }
-//                                }
-//                            }
-//                    self.tableView.reloadData()
-//                    print(self.users)
-//                        })
-//                })
         let ref = Database.database().reference().child("users")
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             guard let snapshot = snapshot.children.allObjects as? [DataSnapshot]
@@ -90,7 +76,7 @@ class SearchMembersViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
             if identifier == "toCreate" {
-                
+                //self.performSegue(withIdentifier: "toCreate", sender: nil)
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "added"), object: self)
                 // 1
                 let indexPath = tableView.indexPathForSelectedRow!

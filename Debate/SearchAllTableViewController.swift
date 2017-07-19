@@ -13,16 +13,33 @@ import Firebase
 class SearchAllTableViewController: UITableViewController {
 
     var users = [User]()
+    var filteredUsers = [User]()
+
     var newMember : User?
+    let searchController = UISearchController(searchResultsController: nil)
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        searchController.searchResultsUpdater = self as! UISearchResultsUpdating
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func filterContentForSearchText(searchText: String, scope: String = "All") {
+        filteredUsers = users.filter { user in
+            return user.username.lowercased().contains(searchText.lowercased())
+        }
+        
+        tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,17 +69,21 @@ class SearchAllTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return filteredUsers.count
+        }
         return users.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchAllTableViewCell", for: indexPath) as! SearchAllTableViewCell
         
-        // 1
-        let row = indexPath.row
-        
-        // 2
-        let user = users[row]
+        var user : User
+        if searchController.isActive && searchController.searchBar.text != "" {
+            user = filteredUsers[indexPath.row]
+        } else {
+            user = users[indexPath.row]
+        }
         
         cell.usernameLabel.text = user.username
         
@@ -74,16 +95,18 @@ class SearchAllTableViewController: UITableViewController {
             if identifier == "toMembers" {
                 
                 // NotificationCenter.default.post(name: Notification.Name(rawValue: "added"), object: self)
+//                NotificationCenter.default.post(name: Notification.Name(rawValue: "addedAll"), object: self)
+
                 // 1
                 let indexPath = tableView.indexPathForSelectedRow!
                 // 2
                 let user: User
-                // if searchController.isActive && searchController.searchBar.text != "" {
-                 //   user = filteredUsers[indexPath.row]
-                //} else {
+                if searchController.isActive && searchController.searchBar.text != "" {
+                    user = filteredUsers[indexPath.row]
+                } else {
                     user = users[indexPath.row]
-                // }
-                // 3
+                }
+                
                 let membersTableViewController = segue.destination as! MembersTableViewController
                 // 4
                 membersTableViewController.user = user
@@ -92,15 +115,12 @@ class SearchAllTableViewController: UITableViewController {
         }
     }
     
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
+//        override func tableView(_ tableView: UITableView,
+//                       didSelectRowAt indexPath: IndexPath){
+//            self.navigationController?.popViewController(animated: true)
+//            self.performSegue(withIdentifier: "toMembers", sender: nil)
+//        }
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -111,7 +131,6 @@ class SearchAllTableViewController: UITableViewController {
     */
 
     /*
-    // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
@@ -147,4 +166,11 @@ class SearchAllTableViewController: UITableViewController {
     }
     */
 
+}
+
+extension SearchAllTableViewController : UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchText: searchController.searchBar.text!)
+    }
 }

@@ -36,6 +36,7 @@ PODS:
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMSessionFetcher/Core (1.1.10)
+  - JSONHelper (2.2.0)
   - PPEventRegistryAPI (0.0.3)
   - SwiftyJSON (3.1.4)
 
@@ -45,6 +46,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - FirebaseUI/Auth
+  - JSONHelper
   - PPEventRegistryAPI
   - SwiftyJSON
 
@@ -59,9 +61,10 @@ SPEC CHECKSUMS:
   FirebaseUI: 5ebebe2c096c71f20abd1d43d0388958373bdaa0
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 30d874b96d0d76028f61fbd122801e3f030d47db
+  JSONHelper: 340bf5d996f51fb9a0a001fbce9e27a81216e1a7
   PPEventRegistryAPI: 38b77d24bab632209f05b2d6f79fb5c0bfe76492
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: c36810ce8e3d2c5f0df0a10659b00b844a4cc4c4
+PODFILE CHECKSUM: 7a2fe052a6854a32e6d37c36d53583633c26d385
 
 COCOAPODS: 1.2.1

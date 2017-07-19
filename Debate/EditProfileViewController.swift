@@ -21,23 +21,67 @@ class EditProfileViewController : UIViewController {
         let ref = Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!)
         
         if nameTextField.text != "" {
-            print ("name")
             let userAttr = ["name" : nameTextField.text]
             
             ref.updateChildValues(userAttr)
             User.current.name = nameTextField.text!
         }
+//        
+//        let ref = Database.database().reference().child("users").child(User.current.uid)
+//        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+//            if let user = User(snapshot: snapshot) {
+//                groupIDs = user.groups!
+//                let ref1 = Database.database().reference().child("groups")
+//                ref1.observe(.value, with: { (snapshot) in
+//                    guard let snapshot = snapshot.children.allObjects as? [DataSnapshot]
+//                        else { return }
+//                    //print(snapshot[0])
+//                    for snap in snapshot {
+//                        for id in groupIDs {
+//                            if id == snap.key {
+//                                let group = Group(snapshot: snap)
+//                                self.groups.append(group!)
+//                            }
+//                        }
+//                    }
+//                    self.tableView.reloadData()
+//                    groupIDs = []
+//                })
+//            }
+//        })
         
         if usernameTextField.text != "" {
-            print ("username")
             let userAttr = ["username": usernameTextField.text]
-            
             ref.updateChildValues(userAttr)
             User.current.username = usernameTextField.text!
+            
+                let ref2 = Database.database().reference().child("users").child(User.current.uid).child("groups")
+                ref2.observe(.value, with: { (snapshot) in
+                    guard let snapshot = snapshot.children.allObjects as? [DataSnapshot]
+                        else { return }
+                    for group in snapshot {
+                        print(group.value as? String)
+                         let ref3 = Database.database().reference().child("groups").child((group.value as? String)!).child("users")
+                        ref3.observe(.value, with: { (users) in
+                            guard var users = users.children.allObjects as? [String]
+                                else {return}
+                            for user in users {
+                                var index = 0
+
+                                if user == User.current.username {
+                                users[index] = User.current.username
+                                index = 0
+                                }
+                                index += 1
+                            }
+                        })
+                    }
+//                })
+//
+            })
         }
         
         if aboutMeTextField.text != "" {
-            print("about Me")
             let userAttr = ["aboutMe" : aboutMeTextField.text]
             
             ref.updateChildValues(userAttr)

@@ -13,5 +13,6 @@ target 'Debate' do
 pod 'Firebase/Auth'
 pod 'FirebaseUI/Auth'
 pod ‘Firebase/Database’
+pod ‘JSONHelper’
 
 end

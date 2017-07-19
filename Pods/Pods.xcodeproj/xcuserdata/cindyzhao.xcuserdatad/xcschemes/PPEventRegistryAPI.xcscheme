@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'E4D8198F4E13D0235F7ADE30BB1060ED'
+               BlueprintIdentifier = 'E4BC61A94B4C90F90FC90F2A97594654'
                BlueprintName = 'PPEventRegistryAPI'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'PPEventRegistryAPI.framework'>

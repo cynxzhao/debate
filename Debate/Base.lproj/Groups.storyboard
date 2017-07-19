@@ -169,7 +169,6 @@
                                         <connections>
                                             <outlet property="nameLabel" destination="qAD-sa-S3p" id="MGb-Vu-Q4F"/>
                                             <outlet property="usernameLabel" destination="O6e-4c-Dag" id="x16-N2-JoQ"/>
-                                            <segue destination="Kgp-vd-yRk" kind="unwind" identifier="toCreate" unwindAction="unwindToListCreateViewController:" id="T8A-Vh-P4P"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -179,6 +178,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="f1q-ig-yPs" id="l7t-69-39q"/>
+                        <segue destination="Kgp-vd-yRk" kind="unwind" identifier="toCreate" unwindAction="unwindToListCreateViewController:" id="2XA-fI-X67"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Wm-nZ-LzN" userLabel="First Responder" sceneMemberID="firstResponder"/>

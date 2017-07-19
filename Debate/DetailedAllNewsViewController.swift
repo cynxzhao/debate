@@ -12,12 +12,23 @@ import SwiftyJSON
 
 class DetailedAllNewsViewController: UIViewController {
 
+    var new : News?
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var textLabel: UILabel!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        textLabel.text = new?.text!
+        titleLabel.text = new?.title
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

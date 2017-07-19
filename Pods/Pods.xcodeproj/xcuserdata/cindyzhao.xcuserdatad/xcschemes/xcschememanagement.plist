@@ -24,6 +24,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>JSONHelper.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>PPEventRegistryAPI.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,12 +52,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3380590F973AFAFA30255D504B7DEDAC</key>
+		<key>2D919A51698B2CAADBBD3AA475994FE7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>64A6678481E725D23A968A232B09FE87</key>
+		<key>3380590F973AFAFA30255D504B7DEDAC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,7 +67,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AD6CA48D533B030F0577366EB8DC0017</key>
+		<key>BE45E6B4E431E2E286C86792ED5EC030</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -72,7 +77,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E4D8198F4E13D0235F7ADE30BB1060ED</key>
+		<key>D9E9BA6CA06A32ADBA7E5D722F9B6296</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E4BC61A94B4C90F90FC90F2A97594654</key>
 		<dict>
 			<key>primary</key>
 			<true/>

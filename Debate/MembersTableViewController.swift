@@ -18,21 +18,19 @@ class MembersTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         var key: String = ""
         
         // retrieves users in group clicked
         let ref = Database.database().reference().child("groups")
         ref.observe(.value, with: { (snapshot) in
-        guard let snapshot = snapshot.children.allObjects as? [DataSnapshot]
-            else { return }
+            guard let snapshot = snapshot.children.allObjects as? [DataSnapshot]
+                else { return }
             for snap in snapshot {
                 let value = snap.value as? NSDictionary
                 if value?["groupName"] as? String == self.group?.groupName {
                     
                     key = snap.key
-                    print(key)
-                        
+                    
                     self.users = (value?["users"] as? [String])!
                     
                     self.userSet = Set(self.users)
@@ -43,58 +41,56 @@ class MembersTableViewController: UITableViewController {
                     }
                     
                     self.users = Array(self.userSet)
-                    //print ("users: \(self.users)")
                     self.tableView.reloadData()
-
-//                    ref.observe(.value, with: { (snapshot) in
-//                        guard let snapshot = snapshot.children.allObjects as? [DataSnapshot]
-//                            else { return }
-//                        for snap in snapshot {
-//                            let value = snap.value as? NSDictionary
-//                            if value?["groupName"] as? String == self.group?.groupName {
-// //                               value?.setValue(self.users, forKey: "users")
-//                                print ("hi")
-//                                print(self.users)
-//                                value?.setValuesForKeys(["users": self.users])
-//                            }
-//                        }
-//                    })
                     let ref1 = Database.database().reference().child("groups").child(key)
-                    //let attribute = ["users" : self.users]
                     ref1.updateChildValues(["users" : self.users])
-
+                    
                 }
             }
         })
-        
-        
-        
-//        userSet = Set(self.users)
 
-//        if let user = user {
-//            userSet.insert(user.username)
-//        }
-        
-//        self.users = Array(userSet)
-        
+//        memberAdded()
+    }
+    
+//    func memberAdded() {
+//        var key: String = ""
+//        
+//        // retrieves users in group clicked
+//        let ref = Database.database().reference().child("groups")
 //        ref.observe(.value, with: { (snapshot) in
 //            guard let snapshot = snapshot.children.allObjects as? [DataSnapshot]
 //                else { return }
 //            for snap in snapshot {
 //                let value = snap.value as? NSDictionary
 //                if value?["groupName"] as? String == self.group?.groupName {
-//                    value?.setValue(self.users, forKey: "users")
-//                    print ("hi")
+//                    
+//                    key = snap.key
+//                    
+//                    self.users = (value?["users"] as? [String])!
+//                    
+//                    self.userSet = Set(self.users)
+//                    
+//                    // adds new user to list
+//                    if let user = self.user {
+//                        self.userSet.insert(user.username)
+//                    }
+//                    
+//                    self.users = Array(self.userSet)
+//                    self.tableView.reloadData()
+//                    let ref1 = Database.database().reference().child("groups").child(key)
+//                    ref1.updateChildValues(["users" : self.users])
+//                    
 //                }
 //            }
 //        })
-        
-        //self.tableView.reloadData()
-        
-    }
+// 
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        NotificationCenter.default.addObserver(self, selector: #selector(MembersTableViewController.memberAdded), name: NSNotification.Name(rawValue: "addedAll"), object: nil)
+
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -147,17 +143,18 @@ class MembersTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    
+    // Override to support editing the table view DELETE FUNCTION DOES NOT WORK YET
+    override     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            let row = indexPath.row
+            let user = users[row]
+            userSet.remove(user)
+            users.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.automatic)
+        }
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.
