@@ -9,10 +9,9 @@ target 'Debate' do
    pod 'Firebase/Core'
    pod ‘Alamofire’
    pod ‘SwiftyJSON’
-   pod ‘PPEventRegistryAPI’
 pod 'Firebase/Auth'
 pod 'FirebaseUI/Auth'
 pod ‘Firebase/Database’
-pod ‘JSONHelper’
+pod 'MBProgressHUD', '~> 1.0.0'
 
 end

@@ -11,12 +11,12 @@ import FirebaseAuth
 import FirebaseDatabase.FIRDataSnapshot
 import SwiftyJSON
 
-class News {
+class News: Comparable {
     var title: String
     var date: String
     var url: String
     var tags: [String]?
-    var text: String?
+    var date2: Date?
     
     init(title: String, date: String, url: String)
     {
@@ -39,11 +39,29 @@ class News {
         self.tags = tags
     }
 
-    init(json: JSON) {
-        self.title = json["webTitle"].stringValue
-        self.date = json["webPublicationDate"].stringValue
-        self.url = json["webUrl"].stringValue
-        self.text = json["fields"]["bodyText"].stringValue
-        
+    init(guardianjson: JSON) {
+        self.title = guardianjson["webTitle"].stringValue
+        self.date = guardianjson["webPublicationDate"].stringValue
+        self.url = guardianjson["webUrl"].stringValue
         }
+    
+    init(otherjson: JSON) {
+        self.title = otherjson["title"].stringValue
+        self.date = otherjson["publishedAt"].stringValue
+        self.url = otherjson["url"].stringValue
+    }
+    
+    init(nytjson: JSON) {
+        self.title = nytjson["headline"]["main"].stringValue
+        self.date = nytjson["pub_date"].stringValue
+        self.url = nytjson["web_url"].stringValue
+    }
+    
+    static func ==(lhs: News, rhs: News) -> Bool {
+        return lhs.date2! == rhs.date2!
+    }
+    
+    static func <(lhs: News, rhs: News) -> Bool {
+        return lhs.date2! < rhs.date2!
+    }
 }

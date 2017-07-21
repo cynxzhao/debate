@@ -49,6 +49,7 @@
 		CA8DAE3E1F195EAE00EE210F /* SearchAllTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DAE3D1F195EAE00EE210F /* SearchAllTableViewController.swift */; };
 		CA8DAE401F195F2200EE210F /* MembersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DAE3F1F195F2200EE210F /* MembersTableViewCell.swift */; };
 		CA8DAE421F195F2D00EE210F /* SearchAllTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DAE411F195F2D00EE210F /* SearchAllTableViewCell.swift */; };
+		CAE9EF2E1F211F0D00F51AF5 /* SendNewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE9EF2D1F211F0D00F51AF5 /* SendNewsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +99,7 @@
 		CA8DAE3D1F195EAE00EE210F /* SearchAllTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchAllTableViewController.swift; sourceTree = "<group>"; };
 		CA8DAE3F1F195F2200EE210F /* MembersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MembersTableViewCell.swift; sourceTree = "<group>"; };
 		CA8DAE411F195F2D00EE210F /* SearchAllTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchAllTableViewCell.swift; sourceTree = "<group>"; };
+		CAE9EF2D1F211F0D00F51AF5 /* SendNewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendNewsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,6 +246,7 @@
 				CA1ABDFE1F142A1600615629 /* DetailedAllNewsViewController.swift */,
 				CA1ABE001F142A2100615629 /* SendNewsViewController.swift */,
 				CA1ABE131F142BDD00615629 /* AllNewsTableViewCell.swift */,
+				CAE9EF2D1F211F0D00F51AF5 /* SendNewsTableViewCell.swift */,
 			);
 			name = AllNews;
 			sourceTree = "<group>";
@@ -436,6 +439,7 @@
 				CA1ABE121F142BC400615629 /* News.swift in Sources */,
 				CA1ABDF11F14299200615629 /* SentNewsTableViewController.swift in Sources */,
 				CA1ABDE91F14292900615629 /* GroupService.swift in Sources */,
+				CAE9EF2E1F211F0D00F51AF5 /* SendNewsTableViewCell.swift in Sources */,
 				CA1ABE261F14843600615629 /* DetailedArchivesViewController.swift in Sources */,
 				CA1ABE4E1F16BE5E00615629 /* Constants.swift in Sources */,
 			);

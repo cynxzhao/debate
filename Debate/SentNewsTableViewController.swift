@@ -7,17 +7,38 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class SentNewsTableViewController: UITableViewController {
 
     var group : Group?
+    var news = [News]()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        let ref = Database.database().reference().child("groups").child(group!.id).child("news")
+        ref.observe(.value, with: { (snapshot) in
+            guard let snapshot = snapshot.children.allObjects as? [DataSnapshot]
+                else { return }
+            for snap in snapshot {
+            let new = News(snapshot: snap)
+            self.news.append(new!)
+
+            }
+            self.tableView.reloadData()
+
+        })
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        news = []
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -25,7 +46,7 @@ class SentNewsTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -33,14 +54,24 @@ class SentNewsTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return news.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "sentNewsTableViewCell", for: indexPath) as! SentNewsTableViewCell
+        
+        // 1
+        let row = indexPath.row
+        
+        // 2
+        let new = news[row]
+        
+        cell.titleLabel.text = new.title
+        cell.dateLabel.text = new.date
+        cell.urlLabel.text = new.url
+        
+        return cell
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -53,6 +84,16 @@ class SentNewsTableViewController: UITableViewController {
                 // 4
                 MembersTableViewController.group = group
             }
+        else if identifier == "toDetailedNews" {
+                    // 1
+                    let indexPath = tableView.indexPathForSelectedRow!
+                    // 2
+                    let new = news[indexPath.row]
+                    // 3
+                    let detailedNewsViewController = segue.destination as! DetailedNewsViewController
+                    // 4
+                    detailedNewsViewController.news = new
+                }
         }
     }
 

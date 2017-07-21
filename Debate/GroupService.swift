@@ -29,6 +29,12 @@ struct GroupService {
             if let error = error {
                 assertionFailure(error.localizedDescription)
                 return completion(nil)
+            } else {
+                let userAttrs3 = ["groupName" : groupName,
+                                  "id": ref1.key,
+                                  "users" : users] as [String : Any]
+                let ref3 = Database.database().reference().child("groups").child(ref1.key)
+                ref3.setValue(userAttrs3)
             }
             
             let ref3 = Database.database().reference().child("users").child(firUser.uid)
