@@ -34,5 +34,47 @@ struct UserService {
     }
         
 }
+    
+    static func addToGroup(uid: String, groupID: String) {
+        let ref3 = Database.database().reference().child("users").child(uid)
+        ref3.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let user = User(snapshot: snapshot) {
+                var oldGroup = user.groups
+                if(oldGroup![0] == "abc") {
+                    var newArray = [String]()
+                    newArray.append(groupID)
+                    let userAttrs = ["groups" : newArray]
+                    ref3.updateChildValues(userAttrs as [String: Any])
+                }  else {
+                    oldGroup!.append(groupID)
+                    let userAttrs = ["groups" : oldGroup!]
+                    ref3.updateChildValues(userAttrs as [String: Any])
+                }
+            }
+        })
+    }
+    
+    static func leaveGroup(groupID: String, username: String) {
+  
+        
+            let ref = Database.database().reference().child("groups").child(groupID).child("users")
+            
+            ref.queryEqual(toValue: username).observe(.childAdded, with: { (snapshot) in
+                
+                snapshot.ref.removeValue(completionBlock: { (error, reference) in
+                    if error != nil {
+                        print("There has been an error:\(error)")
+                    }
+                })
+                
+            })
+            
+//        Database.database().reference().child("groups").child(firstTree).child("users")[childIWantToRemove].removeValueWithCompletionBlock { (error, ref) in
+//            if error != nil {
+//                print("error \(error)")
+//            }
+//       }
+    }
+
 
 }

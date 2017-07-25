@@ -16,7 +16,7 @@ struct GroupService {
     static var allGroupIDs = [String]()
     // need to add a function here that goes through "users" under the group and goes through all users to see if their usernames match and adds the group ID to their "groups"
     
-    static func create(_ firUser: FIRUser, groupName: String, users: [String], completion: @escaping (User?) -> Void) {
+    static func create(_ firUser: FIRUser, groupName: String, users: [String], completion: @escaping (Group?) -> Void) {
 
         var userAttrs = ["groups" : allGroupIDs]
         let userAttrs2 = ["groupName" : groupName,
@@ -25,6 +25,7 @@ struct GroupService {
         
         // the one in "groups"
         let ref2 = Database.database().reference().child("groups").childByAutoId()
+        
         ref2.setValue(userAttrs2) { (error, ref1) in
             if let error = error {
                 assertionFailure(error.localizedDescription)
@@ -35,6 +36,10 @@ struct GroupService {
                                   "users" : users] as [String : Any]
                 let ref3 = Database.database().reference().child("groups").child(ref1.key)
                 ref3.setValue(userAttrs3)
+                ref3.observeSingleEvent(of: .value, with: { (snapshot) in
+                    let group = Group(snapshot: snapshot)
+                    completion(group)
+                })
             }
             
             let ref3 = Database.database().reference().child("users").child(firUser.uid)

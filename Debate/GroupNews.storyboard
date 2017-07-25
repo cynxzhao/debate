@@ -17,6 +17,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Prt-A5-NJg">
+                            <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Leave Group"/>
+                            <connections>
+                                <action selector="leaveGroup:" destination="zs6-vG-9nD" eventType="touchUpInside" id="nXC-QI-Byo"/>
+                            </connections>
+                        </button>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="membersTableViewCell" id="OWE-oc-a7M" customClass="MembersTableViewCell" customModule="Debate" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -88,7 +96,6 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="usernameLabel" destination="tv5-lv-EUJ" id="Swr-mo-IoA"/>
-                                    <segue destination="nip-4F-Rad" kind="unwind" identifier="toMembers" unwindAction="unwindToMembersViewController:" id="RhO-Sa-adi"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -97,6 +104,9 @@
                             <outlet property="delegate" destination="8tY-EA-S4F" id="6zf-xK-QtS"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="nip-4F-Rad" kind="unwind" identifier="toMembers" unwindAction="unwindToMembersViewController:" id="RsZ-hi-BiC"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Oq-XG-Vat" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="nip-4F-Rad" userLabel="Exit" sceneMemberID="exit"/>
@@ -111,9 +121,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="search hashtags" id="VtJ-R8-XAo">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="sentNewsTableViewCell" id="eHI-fA-9wh" customClass="SentNewsTableViewCell" customModule="Debate" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="80"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eHI-fA-9wh" id="HmE-LB-GjF">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
@@ -133,7 +148,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCs-bg-Tya">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tags" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCs-bg-Tya">
                                             <rect key="frame" x="28" y="50" width="320" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -144,8 +159,8 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="dateLabel" destination="lVf-BZ-gtn" id="QxE-Wl-M8E"/>
+                                    <outlet property="tagsLabel" destination="YCs-bg-Tya" id="4cG-Si-C76"/>
                                     <outlet property="titleLabel" destination="bVX-cn-mo8" id="eMY-4h-yfP"/>
-                                    <outlet property="urlLabel" destination="YCs-bg-Tya" id="FnY-eX-n7Q"/>
                                     <segue destination="i3P-uR-OX0" kind="show" identifier="toDetailedNews" id="Yxn-3m-O56"/>
                                 </connections>
                             </tableViewCell>
@@ -183,15 +198,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xcG-qZ-rKx">
-                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="xcG-qZ-rKx" firstAttribute="top" secondItem="JTi-lt-PCG" secondAttribute="bottom" id="0NP-pS-kp3"/>
+                            <constraint firstItem="xcG-qZ-rKx" firstAttribute="top" secondItem="JTi-lt-PCG" secondAttribute="bottom" constant="-64" id="0NP-pS-kp3"/>
                             <constraint firstItem="xcG-qZ-rKx" firstAttribute="leading" secondItem="fT1-WJ-ptf" secondAttribute="leading" id="KAn-45-D0A"/>
-                            <constraint firstItem="uaR-aV-gVW" firstAttribute="top" secondItem="xcG-qZ-rKx" secondAttribute="bottom" id="R14-uD-X2F"/>
+                            <constraint firstItem="uaR-aV-gVW" firstAttribute="top" secondItem="xcG-qZ-rKx" secondAttribute="bottom" constant="-44" id="R14-uD-X2F"/>
                             <constraint firstAttribute="trailing" secondItem="xcG-qZ-rKx" secondAttribute="trailing" id="h7H-4d-Lke"/>
                         </constraints>
                     </view>

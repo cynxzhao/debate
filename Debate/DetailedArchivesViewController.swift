@@ -10,9 +10,18 @@ import UIKit
 
 class DetailedArchivesViewController: UIViewController {
 
+    var news : News?
+    
+    @IBOutlet weak var webView: UIWebView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let url = self.news!.url
+        let requestURL = NSURL(string:url)
+        //        let request = NSURLRequest(url:requestURL! as URL)
+        let r = NSURLRequest(url: requestURL! as URL, cachePolicy: NSURLRequest.CachePolicy.reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 5.0)
+        webView.loadRequest(r as URLRequest)
+        
         // Do any additional setup after loading the view.
     }
 
@@ -20,7 +29,7 @@ class DetailedArchivesViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
 
     /*
     // MARK: - Navigation

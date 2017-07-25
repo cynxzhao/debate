@@ -60,6 +60,12 @@ class DetailedAllNewsViewController: UIViewController {
         }
     }
     
+    @IBAction func saveTapped(_ sender: UIButton) {
+        NewsService.save(userID: User.current.uid, title: news!.title, date: news!.date, url: news!.url) { (news) in
+            guard let news = news else { return }
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
             if identifier == "toSend" {

@@ -24,6 +24,8 @@ struct NewsService {
         
     let ref = Database.database().reference().child("groups").child(group.id).child("news").childByAutoId()
         ref.updateChildValues(newsAttr) { (error, ref) in
+            
+            
             if let error = error {
                 assertionFailure(error.localizedDescription)
                 return completion(nil)
@@ -37,4 +39,42 @@ struct NewsService {
 
     }
     
+    static func save(userID: String, title: String, date: String, url: String, completion: @escaping (News?) -> Void) {
+        let newsAttr = ["title": title,
+                        "date" : date,
+                        "url": url] as [String: Any]
+        
+        let ref = Database.database().reference().child("news").child(userID).childByAutoId()
+        
+        ref.setValue(newsAttr) { (error, ref1) in
+            if let error = error {
+                print("THERE IS AN ERROR")
+                assertionFailure(error.localizedDescription)
+                return completion(nil)
+            } else {
+                let newsAttr2 = ["title" : title,
+                                  "date": date,
+                                  "url" : url,
+                                  "id" : ref1.key] as [String : Any]
+                //let ref2 = Database.database().reference().child("news").child(userID).child(ref.key)
+                ref1.setValue(newsAttr2)
+                ref1.observeSingleEvent(of: .value, with: { (snapshot) in
+                    let news = News(snapshot1: snapshot)
+                    completion(news)
+                })
+            }
+            
+
+        }
+    }
+    
+    static func deleteFromArchives(article: String, completion: @escaping (News?) -> Void) {
+        
+        Database.database().reference().child("news").child(User.current.uid).child(article).removeValue { (error, ref) in
+            if error != nil {
+                print("error \(error)")
+            }
+            
+        }
+    }
 }

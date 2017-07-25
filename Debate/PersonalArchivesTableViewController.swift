@@ -7,11 +7,24 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class PersonalArchivesTableViewController: UITableViewController {
+    
+    var new : News?
+    var news = [News]()
+    var filteredNews = [News]()
+    
+    let searchController = UISearchController(searchResultsController: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        searchController.searchResultsUpdater = self as! UISearchResultsUpdating
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
+
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -19,33 +32,92 @@ class PersonalArchivesTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
+    func filterContentForSearchText(searchText: String, scope: String = "All") {
+        filteredNews = news.filter { new in
+            return new.title.lowercased().contains(searchText.lowercased())
+        }
+        
+        tableView.reloadData()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        news = []
+        let ref = Database.database().reference().child("news").child(User.current.uid)
+        ref.observe(.value, with: { (snapshot) in
+            guard let snapshot = snapshot.children.allObjects as? [DataSnapshot]
+                else { return }
+            for snap in snapshot {
+                self.new = News(snapshot1: snap)
+                self.news.append(self.new!)
+                
+            }
+            self.tableView.reloadData()
+            
+        })
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        //news = []
+    }
+    
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        if searchController.isActive && searchController.searchBar.text != "" {
+           return filteredNews.count
+        }
+
+        return news.count
     }
-
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "personalArchivesTableViewCell", for: indexPath) as! PersonalArchivesTableViewCell
+        
+        var new : News
+        if searchController.isActive && searchController.searchBar.text != "" {
+            new = filteredNews[indexPath.row]
+        } else {
+            new = news[indexPath.row]
+        
+        }
+        
+        cell.titleLabel.text = new.title
+        cell.dateLabel.text = new.date
+        cell.urlLabel.text = new.url
+        
         return cell
     }
-    */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            if identifier == "toDetail" {
+                // 1
+                let indexPath = tableView.indexPathForSelectedRow!
+                // 2
+                let new: News
+                if searchController.isActive && searchController.searchBar.text != "" {
+                    new = filteredNews[indexPath.row]
+                } else {
+                    new = news[indexPath.row]
+                }
+                // 3
+                let detailedArchivesViewController = segue.destination as! DetailedArchivesViewController
+                // 4
+                detailedArchivesViewController.news = new
+            }
+        }
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -55,18 +127,23 @@ class PersonalArchivesTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
 
+        if editingStyle == .delete {
+            let row = indexPath.row
+            let new = news[row]
+            
+            NewsService.deleteFromArchives(article: new.id!) { (news) in
+                
+                tableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.automatic)
+                }
+
+            }
+    }
+    
+    
     /*
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
@@ -92,4 +169,11 @@ class PersonalArchivesTableViewController: UITableViewController {
     }
     */
 
+}
+
+extension PersonalArchivesTableViewController : UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchText: searchController.searchBar.text!)
+    }
 }

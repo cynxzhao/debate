@@ -18,6 +18,7 @@ class CreateViewController: UIViewController {
     var user : User?
     var group : Group?
     var users : [String]?
+    var users2 = [User]()
     
     @IBAction func screenTapped(_ sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
@@ -43,8 +44,13 @@ class CreateViewController: UIViewController {
                 self.present(alert, animated: true, completion: nil)
             }else{
                 groupNameTaken = false
-                GroupService.create(firUser, groupName: groupName, users: users) { (group) in
-                    guard let group = group else { return }
+                GroupService.create(firUser, groupName: groupName, users: users) { (group1) in
+                    guard let group = group1 else { return }
+                    
+                    for u in self.users2 {
+                        UserService.addToGroup(uid: u.uid, groupID: group.id)
+                    }
+                
                 }
                 self.navigationController?.popViewController(animated: true)
 
@@ -63,6 +69,8 @@ class CreateViewController: UIViewController {
     func userAdded() {
     if let user = user {
         userSet.insert(user.username)
+        self.users2.append(user)
+        
         }
         users = Array(userSet)
         self.tableView.reloadData()

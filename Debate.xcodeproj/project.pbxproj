@@ -41,8 +41,8 @@
 		CA1ABE261F14843600615629 /* DetailedArchivesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABE251F14843600615629 /* DetailedArchivesViewController.swift */; };
 		CA1ABE281F1485BC00615629 /* PersonalArchivesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABE271F1485BC00615629 /* PersonalArchivesTableViewCell.swift */; };
 		CA1ABE2C1F14862F00615629 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABE2B1F14862F00615629 /* WelcomeViewController.swift */; };
-		CA1ABE2E1F153CCB00615629 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA1ABE2D1F153CCB00615629 /* GoogleService-Info.plist */; };
 		CA1ABE4E1F16BE5E00615629 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ABE4D1F16BE5E00615629 /* Constants.swift */; };
+		CA1BB4EB1F27BE4B0046C247 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA1BB4EA1F27BE4B0046C247 /* GoogleService-Info.plist */; };
 		CA8DAE381F19352200EE210F /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DAE371F19352200EE210F /* SearchTableViewCell.swift */; };
 		CA8DAE3A1F1951E300EE210F /* CreateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DAE391F1951E300EE210F /* CreateTableViewCell.swift */; };
 		CA8DAE3C1F195E9200EE210F /* MembersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DAE3B1F195E9200EE210F /* MembersTableViewController.swift */; };
@@ -91,8 +91,8 @@
 		CA1ABE251F14843600615629 /* DetailedArchivesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedArchivesViewController.swift; sourceTree = "<group>"; };
 		CA1ABE271F1485BC00615629 /* PersonalArchivesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalArchivesTableViewCell.swift; sourceTree = "<group>"; };
 		CA1ABE2B1F14862F00615629 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
-		CA1ABE2D1F153CCB00615629 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CA1ABE4D1F16BE5E00615629 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		CA1BB4EA1F27BE4B0046C247 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CA8DAE371F19352200EE210F /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		CA8DAE391F1951E300EE210F /* CreateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTableViewCell.swift; sourceTree = "<group>"; };
 		CA8DAE3B1F195E9200EE210F /* MembersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MembersTableViewController.swift; sourceTree = "<group>"; };
@@ -157,10 +157,10 @@
 				CA1ABDDA1F14287600615629 /* Services */,
 				CA1ABDD71F14282A00615629 /* Models */,
 				CA1ABDC51F1427EC00615629 /* AppDelegate.swift */,
+				CA1BB4EA1F27BE4B0046C247 /* GoogleService-Info.plist */,
 				CA1ABDCC1F1427EC00615629 /* Assets.xcassets */,
 				CA1ABDCE1F1427EC00615629 /* LaunchScreen.storyboard */,
 				CA1ABDD11F1427EC00615629 /* Info.plist */,
-				CA1ABE2D1F153CCB00615629 /* GoogleService-Info.plist */,
 				CA1ABE4D1F16BE5E00615629 /* Constants.swift */,
 			);
 			path = Debate;
@@ -314,7 +314,7 @@
 				TargetAttributes = {
 					CA1ABDC11F1427EC00615629 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = HVAK544U3E;
+						DevelopmentTeam = 35542M65YW;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -344,9 +344,9 @@
 			files = (
 				CA1ABDDD1F14289800615629 /* Login.storyboard in Resources */,
 				CA1ABDD01F1427EC00615629 /* LaunchScreen.storyboard in Resources */,
-				CA1ABE2E1F153CCB00615629 /* GoogleService-Info.plist in Resources */,
 				CA1ABDCD1F1427EC00615629 /* Assets.xcassets in Resources */,
 				CA1ABE1C1F1449AA00615629 /* GroupNews.storyboard in Resources */,
+				CA1BB4EB1F27BE4B0046C247 /* GoogleService-Info.plist in Resources */,
 				CA1ABE1F1F144B4B00615629 /* Archives.storyboard in Resources */,
 				CA1ABDCB1F1427EC00615629 /* Groups.storyboard in Resources */,
 				CA1ABDE51F1428DB00615629 /* Profile.storyboard in Resources */,
@@ -505,6 +505,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -524,7 +525,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -555,6 +556,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -568,7 +570,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -581,12 +583,13 @@
 			baseConfigurationReference = 8F906522CA82D363D6F53448 /* Pods-Debate.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = HVAK544U3E;
+				DEVELOPMENT_TEAM = 35542M65YW;
 				INFOPLIST_FILE = Debate/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.makeschool.Debate;
+				PRODUCT_BUNDLE_IDENTIFIER = com.makeschool.Debates;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
@@ -598,12 +601,14 @@
 			baseConfigurationReference = 72079F6E50679314E0A93F4E /* Pods-Debate.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = HVAK544U3E;
+				DEVELOPMENT_TEAM = 35542M65YW;
 				INFOPLIST_FILE = Debate/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.makeschool.Debate;
+				"MTL_ENABLE_DEBUG_INFO[arch=*]" = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.makeschool.Debates;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;

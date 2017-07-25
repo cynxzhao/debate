@@ -90,12 +90,18 @@ class SearchAllTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView,
+                   didSelectRowAt indexPath: IndexPath){
+        self.navigationController?.popViewController(animated: true)
+        self.performSegue(withIdentifier: "toMembers", sender: nil)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
             if identifier == "toMembers" {
                 
                 // NotificationCenter.default.post(name: Notification.Name(rawValue: "added"), object: self)
-//                NotificationCenter.default.post(name: Notification.Name(rawValue: "addedAll"), object: self)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "addedAll"), object: self)
 
                 // 1
                 let indexPath = tableView.indexPathForSelectedRow!

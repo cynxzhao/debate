@@ -12,7 +12,7 @@ class SentNewsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var urlLabel: UILabel!
+    @IBOutlet weak var tagsLabel: UILabel!
     
     
     override func awakeFromNib() {

@@ -13,6 +13,10 @@ class SentNewsTableViewController: UITableViewController {
 
     var group : Group?
     var news = [News]()
+    var filteredNews = [News]()
+    
+    let searchController = UISearchController(searchResultsController: nil)
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -39,12 +43,35 @@ class SentNewsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        searchController.searchResultsUpdater = self as! UISearchResultsUpdating
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
+
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func filterContentForSearchText(searchText: String, scope: String = "All") {
+        filteredNews = news.filter { new in
+            
+            var allTags = ""
+
+            for n in new.tags ?? [] {
+                allTags += "\(n) "
+            }
+            print(allTags)
+            return allTags.lowercased().contains(searchText.lowercased())
+
+            }
+        
+        
+        
+        tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -55,21 +82,30 @@ class SentNewsTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return filteredNews.count
+        }
         return news.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "sentNewsTableViewCell", for: indexPath) as! SentNewsTableViewCell
         
-        // 1
-        let row = indexPath.row
         
-        // 2
-        let new = news[row]
+        var new : News
+        if searchController.isActive && searchController.searchBar.text != "" {
+            new = filteredNews[indexPath.row]
+        } else {
+            new = news[indexPath.row]
+        }
         
         cell.titleLabel.text = new.title
         cell.dateLabel.text = new.date
-        cell.urlLabel.text = new.url
+        var allTags = ""
+        for tag in new.tags ?? [] {
+            allTags += "\(tag) "
+        }
+        cell.tagsLabel.text = allTags
         
         return cell
     }
@@ -88,7 +124,12 @@ class SentNewsTableViewController: UITableViewController {
                     // 1
                     let indexPath = tableView.indexPathForSelectedRow!
                     // 2
-                    let new = news[indexPath.row]
+                let new: News
+                if searchController.isActive && searchController.searchBar.text != "" {
+                    new = filteredNews[indexPath.row]
+                } else {
+                    new = news[indexPath.row]
+                }
                     // 3
                     let detailedNewsViewController = segue.destination as! DetailedNewsViewController
                     // 4
@@ -152,4 +193,11 @@ class SentNewsTableViewController: UITableViewController {
     }
     */
 
+}
+
+extension SentNewsTableViewController : UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchText: searchController.searchBar.text!)
+    }
 }

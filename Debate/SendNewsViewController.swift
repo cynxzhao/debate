@@ -57,8 +57,8 @@ class SendNewsViewController: UIViewController {
                     for snap in snapshot {
                         for id in groupIDs {
                             if id == snap.key {
-                                let group = Group(snapshot: snap)
-                                self.groups.append(group!)
+                                let group1 = Group(snapshot: snap)
+                                self.groups.append(group1!)
                             }
                         }
                     }
@@ -67,22 +67,41 @@ class SendNewsViewController: UIViewController {
                 })
             }
         })
-
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         self.groups = []
     }
-    
+
 
     @IBAction func newsSent(_ sender: UIButton) {
-        if text != nil {
+        if tagsTextField.text == "" {
+
+            let alert = UIAlertController(title: "Error", message: "Please add tags for search purposes", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+
+        }
+        else if group == nil {
+
+            let alert = UIAlertController(title: "Error", message: "Please choose a group", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+
+
+        }
+        else {
+
             let tags: String = " " + tagsTextField.text!
             tagsArr = tags.components(separatedBy: " #")
             tagsArr.remove(at: 0)
             NewsService.create(group: group!, title: news!.title, date: news!.date, url: news!.url, tags: tagsArr, completion: { (news) in
                 guard let news = news else { return }
             })
+            
+            self.performSegue(withIdentifier: "toAll", sender: nil)
+
         }
     }
     
@@ -120,7 +139,14 @@ extension SendNewsViewController: UITableViewDataSource {
         
         cell.groupNameLabel.text = group!.groupName
         
+        group = nil
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        group = groups [indexPath.row]
+        
     }
     
 }

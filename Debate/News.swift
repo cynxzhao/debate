@@ -17,6 +17,7 @@ class News: Comparable {
     var url: String
     var tags: [String]?
     var date2: Date?
+    var id: String?
     
     init(title: String, date: String, url: String)
     {
@@ -37,6 +38,20 @@ class News: Comparable {
         self.date = date
         self.url = url
         self.tags = tags
+    }
+    
+    init?(snapshot1: DataSnapshot) {
+        guard let dict = snapshot1.value as? [String : Any],
+            let title = dict["title"] as? String,
+            let date = dict["date"] as? String,
+            let url = dict["url"] as? String,
+            let id = dict["id"] as? String
+            else {return nil}
+        
+        self.title = title
+        self.date = date
+        self.url = url
+       self.id = id
     }
 
     init(guardianjson: JSON) {

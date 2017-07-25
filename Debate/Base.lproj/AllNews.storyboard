@@ -88,16 +88,20 @@
                                 <rect key="frame" x="5" y="28" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
-                                    <segue destination="2hf-Ci-BpM" kind="unwind" unwindAction="unwindToAllNewsTableViewController:" id="gVz-sh-Osj"/>
+                                    <segue destination="2hf-Ci-BpM" kind="unwind" identifier="toBack" unwindAction="unwindToAllNewsTableViewController:" id="gVz-sh-Osj"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yMl-mY-QrQ">
                                 <rect key="frame" x="320" y="28" width="34" height="30"/>
                                 <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveTapped:" destination="idK-fD-ta9" eventType="touchUpInside" id="sZZ-Yt-1LU"/>
+                                    <segue destination="2hf-Ci-BpM" kind="unwind" identifier="toSave" unwindAction="unwindToAllNewsTableViewController:" id="AO1-Vq-bnN"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qe7-Hu-cyq">
-                                <rect key="frame" x="162" y="28" width="36" height="30"/>
-                                <state key="normal" title="Send"/>
+                                <rect key="frame" x="126" y="28" width="107" height="30"/>
+                                <state key="normal" title="Send to Groups"/>
                                 <connections>
                                     <segue destination="sW2-yH-td0" kind="show" identifier="toSend" id="h2a-iy-Mvb"/>
                                 </connections>
@@ -108,13 +112,13 @@
                             <constraint firstAttribute="bottom" secondItem="stS-Ia-XVG" secondAttribute="bottom" id="1SL-lb-VPX"/>
                             <constraint firstItem="stS-Ia-XVG" firstAttribute="leading" secondItem="p25-Ua-HST" secondAttribute="leading" id="5aR-yL-m5W"/>
                             <constraint firstItem="qe7-Hu-cyq" firstAttribute="top" secondItem="6VN-AB-tP2" secondAttribute="bottom" constant="8" id="8dI-qh-vAS"/>
-                            <constraint firstItem="yMl-mY-QrQ" firstAttribute="leading" secondItem="qe7-Hu-cyq" secondAttribute="trailing" constant="122" id="KLN-PY-PKW"/>
                             <constraint firstAttribute="trailing" secondItem="stS-Ia-XVG" secondAttribute="trailing" id="MWl-oH-aIL"/>
                             <constraint firstItem="stS-Ia-XVG" firstAttribute="top" secondItem="6VN-AB-tP2" secondAttribute="bottom" constant="40" id="aoS-gb-3HT"/>
-                            <constraint firstItem="qe7-Hu-cyq" firstAttribute="leading" secondItem="v92-qj-gob" secondAttribute="trailing" constant="123" id="hNZ-1j-nrF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yMl-mY-QrQ" secondAttribute="trailing" constant="5" id="lAV-fu-eyi"/>
                             <constraint firstItem="v92-qj-gob" firstAttribute="leading" secondItem="p25-Ua-HST" secondAttribute="leading" constant="5" id="n41-vU-xu1"/>
                             <constraint firstItem="yMl-mY-QrQ" firstAttribute="top" secondItem="6VN-AB-tP2" secondAttribute="bottom" constant="8" id="oiW-jO-xGt"/>
+                            <constraint firstItem="yMl-mY-QrQ" firstAttribute="leading" secondItem="qe7-Hu-cyq" secondAttribute="trailing" constant="87" id="uAm-8u-Ps8"/>
+                            <constraint firstItem="qe7-Hu-cyq" firstAttribute="leading" secondItem="v92-qj-gob" secondAttribute="trailing" constant="87" id="ur2-OH-04d"/>
                             <constraint firstItem="v92-qj-gob" firstAttribute="top" secondItem="6VN-AB-tP2" secondAttribute="bottom" constant="8" id="zno-vh-789"/>
                         </constraints>
                     </view>
@@ -156,7 +160,7 @@
                                         <rect key="frame" x="0.0" y="28" width="302" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SZw-OP-kbw" id="vST-Pq-ReO">
-                                            <rect key="frame" x="0.0" y="0.0" width="302" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="302" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Group Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wXW-TL-wsK">
@@ -186,7 +190,6 @@
                                 <state key="normal" title="Send"/>
                                 <connections>
                                     <action selector="newsSent:" destination="sW2-yH-td0" eventType="touchUpInside" id="RI2-IY-A9H"/>
-                                    <segue destination="B10-XD-6QR" kind="unwind" unwindAction="unwindToAllNewsTableViewController:" id="nBD-Ey-Sbs"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SUt-Dr-d7Q">
@@ -216,6 +219,7 @@
                     <connections>
                         <outlet property="tableView" destination="M9x-cY-3KD" id="0yc-c1-306"/>
                         <outlet property="tagsTextField" destination="la5-ff-fbP" id="wT1-Kn-FxV"/>
+                        <segue destination="B10-XD-6QR" kind="unwind" identifier="toAll" unwindAction="unwindToAllNewsTableViewController:" id="0W1-U1-oIf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FYq-bd-V6x" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -13,14 +13,18 @@ class HomeTableViewController: UITableViewController {
         
     var groups = [Group]()
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         actOnViewController()
     }
     
     func actOnViewController() {
+        
+        
         var groupIDs = [String]()
         self.groups = []
+        
         let ref = Database.database().reference().child("users").child(User.current.uid)
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             if let user = User(snapshot: snapshot) {
@@ -38,8 +42,9 @@ class HomeTableViewController: UITableViewController {
                             }
                         }
                     }
-                    self.tableView.reloadData()
-                    groupIDs = []
+                    
+                        self.tableView.reloadData()
+                        groupIDs = []
                 })
             }
         })
@@ -50,6 +55,10 @@ class HomeTableViewController: UITableViewController {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(HomeTableViewController.actOnViewController), name: NSNotification.Name(rawValue: "uploaded"), object: nil)
 
+    }
+    
+    @IBAction func unwindToHomeViewController(_ segue: UIStoryboardSegue) {
+        
     }
     
 //    override func viewDidLoad() {
@@ -86,7 +95,7 @@ class HomeTableViewController: UITableViewController {
     //}
     
     override func viewDidDisappear(_ animated: Bool) {
-        self.groups = []
+        //self.groups = []
     }
     
     override func didReceiveMemoryWarning() {

@@ -125,6 +125,7 @@ class MembersTableViewController: UITableViewController {
     @IBAction func unwindToMembersViewController(_ segue: UIStoryboardSegue) {
         
     }
+    
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
@@ -142,19 +143,6 @@ class MembersTableViewController: UITableViewController {
         return true
     }
     */
-
-    
-    // Override to support editing the table view DELETE FUNCTION DOES NOT WORK YET
-    override     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let row = indexPath.row
-            let user = users[row]
-            userSet.remove(user)
-            users.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.automatic)
-        }
-    }
-    
 
     /*
     // Override to support rearranging the table view.

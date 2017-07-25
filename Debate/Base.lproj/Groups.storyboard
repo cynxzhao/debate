@@ -267,7 +267,7 @@
         <scene sceneID="xTx-f1-Sk3">
             <objects>
                 <navigationController title="Groups" automaticallyAdjustsScrollViewInsets="NO" id="Yml-Ob-ELA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="1dh-Ts-5fU"/>
+                    <tabBarItem key="tabBarItem" id="1dh-Ts-5fU"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4aO-Ag-pJc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
