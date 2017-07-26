@@ -45,36 +45,37 @@ struct NewsService {
                         "url": url] as [String: Any]
         
         let ref = Database.database().reference().child("news").child(userID).childByAutoId()
-        
+        print("first")
         ref.setValue(newsAttr) { (error, ref1) in
             if let error = error {
-                print("THERE IS AN ERROR")
                 assertionFailure(error.localizedDescription)
                 return completion(nil)
             } else {
+                print("second")
                 let newsAttr2 = ["title" : title,
                                   "date": date,
                                   "url" : url,
                                   "id" : ref1.key] as [String : Any]
                 //let ref2 = Database.database().reference().child("news").child(userID).child(ref.key)
                 ref1.setValue(newsAttr2)
+                print("third")
                 ref1.observeSingleEvent(of: .value, with: { (snapshot) in
                     let news = News(snapshot1: snapshot)
                     completion(news)
                 })
             }
             
-
         }
     }
     
-    static func deleteFromArchives(article: String, completion: @escaping (News?) -> Void) {
+    static func deleteFromArchives(article: String) {
         
         Database.database().reference().child("news").child(User.current.uid).child(article).removeValue { (error, ref) in
+            //print ("first")
             if error != nil {
-                print("error \(error)")
+                print("there is an error")
+                print("error \(error!.localizedDescription)")
             }
-            
         }
     }
 }
