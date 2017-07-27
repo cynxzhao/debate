@@ -16,13 +16,19 @@ class MembersTableViewController: UITableViewController {
     var user : User?
     var userSet = Set<String>()
     
+    @IBAction func leaveGroup(_ sender: UIButton) {
+        var id = group!.id
+        
+        UserService.leave(groupID: id, username: User.current.username)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         var key: String = ""
         
         // retrieves users in group clicked
         let ref = Database.database().reference().child("groups")
-        ref.observe(.value, with: { (snapshot) in
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
             guard let snapshot = snapshot.children.allObjects as? [DataSnapshot]
                 else { return }
             for snap in snapshot {
@@ -49,42 +55,7 @@ class MembersTableViewController: UITableViewController {
             }
         })
 
-//        memberAdded()
     }
-    
-//    func memberAdded() {
-//        var key: String = ""
-//        
-//        // retrieves users in group clicked
-//        let ref = Database.database().reference().child("groups")
-//        ref.observe(.value, with: { (snapshot) in
-//            guard let snapshot = snapshot.children.allObjects as? [DataSnapshot]
-//                else { return }
-//            for snap in snapshot {
-//                let value = snap.value as? NSDictionary
-//                if value?["groupName"] as? String == self.group?.groupName {
-//                    
-//                    key = snap.key
-//                    
-//                    self.users = (value?["users"] as? [String])!
-//                    
-//                    self.userSet = Set(self.users)
-//                    
-//                    // adds new user to list
-//                    if let user = self.user {
-//                        self.userSet.insert(user.username)
-//                    }
-//                    
-//                    self.users = Array(self.userSet)
-//                    self.tableView.reloadData()
-//                    let ref1 = Database.database().reference().child("groups").child(key)
-//                    ref1.updateChildValues(["users" : self.users])
-//                    
-//                }
-//            }
-//        })
-// 
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,66 +22,101 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BpQ-Fe-0Js">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BpQ-Fe-0Js">
                                 <rect key="frame" x="16" y="114" width="343" height="95"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.9059402474635303" green="0.92419061863846386" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="95" id="Swv-Yv-gAd"/>
+                                </constraints>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cPt-8r-khV">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cPt-8r-khV">
                                 <rect key="frame" x="16" y="217" width="343" height="95"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USERNAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fuy-Ld-G8K">
+                                        <rect key="frame" x="21" y="45.5" width="301" height="29.5"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" red="0.45323901519999998" green="0.60774975769999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="fuy-Ld-G8K" secondAttribute="trailing" constant="21" id="TmK-w6-2DU"/>
+                                    <constraint firstAttribute="bottom" secondItem="fuy-Ld-G8K" secondAttribute="bottom" constant="20" id="Y6d-0b-FXS"/>
+                                    <constraint firstAttribute="height" constant="95" id="YzO-6X-GJC"/>
+                                    <constraint firstItem="fuy-Ld-G8K" firstAttribute="leading" secondItem="cPt-8r-khV" secondAttribute="leading" constant="21" id="pgH-14-rQQ"/>
+                                </constraints>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cfE-UH-zrd">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cfE-UH-zrd">
                                 <rect key="frame" x="16" y="320" width="343" height="231"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.90594024750000002" green="0.92419061859999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="231" id="jzv-sG-Wnl"/>
+                                </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qcB-bb-nb9">
-                                <rect key="frame" x="37" y="158" width="309" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="25"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qcB-bb-nb9">
+                                <rect key="frame" x="37" y="163.5" width="301" height="29.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                 <color key="textColor" red="0.47006338380000001" green="0.47501141940000002" blue="0.47501141940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pFR-dY-206">
-                                <rect key="frame" x="37" y="230" width="148" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pFR-dY-206">
+                                <rect key="frame" x="37" y="232" width="301" height="24.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="About Me:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bje-zo-UK4">
-                                <rect key="frame" x="37" y="335" width="148" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About Me:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bje-zo-UK4">
+                                <rect key="frame" x="37" y="335" width="301" height="24.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="USERNAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fuy-Ld-G8K">
-                                <rect key="frame" x="37" y="260" width="309" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="25"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ABOUT ME" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e2j-hO-GQC">
-                                <rect key="frame" x="37" y="365" width="309" height="169"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ABOUT ME" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e2j-hO-GQC">
+                                <rect key="frame" x="37" y="364.5" width="301" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="IMj-qi-Vs7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                 <color key="textColor" red="0.47006338380000001" green="0.47501141940000002" blue="0.47501141940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TdC-Q8-LnS">
-                                <rect key="frame" x="37" y="133" width="85" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TdC-Q8-LnS">
+                                <rect key="frame" x="37" y="129.5" width="301" height="24.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="BpQ-Fe-0Js" firstAttribute="trailing" secondItem="m5d-M1-Z5d" secondAttribute="trailingMargin" id="3Xm-tN-15M"/>
+                            <constraint firstItem="TdC-Q8-LnS" firstAttribute="top" secondItem="IV4-of-u6o" secondAttribute="bottom" constant="65" id="6aN-B5-Wdf"/>
+                            <constraint firstItem="cPt-8r-khV" firstAttribute="top" secondItem="BpQ-Fe-0Js" secondAttribute="bottom" constant="8" id="Dq5-48-NW3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="pFR-dY-206" secondAttribute="trailing" constant="21" id="G0x-Mg-HWu"/>
+                            <constraint firstItem="bje-zo-UK4" firstAttribute="leading" secondItem="m5d-M1-Z5d" secondAttribute="leadingMargin" constant="21" id="K9W-2A-R9R"/>
+                            <constraint firstItem="cPt-8r-khV" firstAttribute="trailing" secondItem="m5d-M1-Z5d" secondAttribute="trailingMargin" id="MEE-bO-lgk"/>
+                            <constraint firstItem="cPt-8r-khV" firstAttribute="top" secondItem="qcB-bb-nb9" secondAttribute="bottom" constant="24" id="MX7-ZO-ulU"/>
+                            <constraint firstItem="cfE-UH-zrd" firstAttribute="leading" secondItem="m5d-M1-Z5d" secondAttribute="leadingMargin" id="Md7-Rf-gOk"/>
+                            <constraint firstItem="cfE-UH-zrd" firstAttribute="trailing" secondItem="m5d-M1-Z5d" secondAttribute="trailingMargin" id="N0D-6H-Bul"/>
+                            <constraint firstItem="e2j-hO-GQC" firstAttribute="leading" secondItem="m5d-M1-Z5d" secondAttribute="leadingMargin" constant="21" id="Rwj-sL-w5Z"/>
+                            <constraint firstItem="pFR-dY-206" firstAttribute="top" secondItem="BpQ-Fe-0Js" secondAttribute="bottom" constant="23" id="TiS-Jk-foH"/>
+                            <constraint firstItem="TdC-Q8-LnS" firstAttribute="leading" secondItem="m5d-M1-Z5d" secondAttribute="leadingMargin" constant="21" id="YIt-Kw-4hq"/>
+                            <constraint firstItem="BpQ-Fe-0Js" firstAttribute="leading" secondItem="m5d-M1-Z5d" secondAttribute="leadingMargin" id="dBv-bq-ZdD"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bje-zo-UK4" secondAttribute="trailing" constant="21" id="dFq-rP-2Eo"/>
+                            <constraint firstItem="e2j-hO-GQC" firstAttribute="top" secondItem="bje-zo-UK4" secondAttribute="bottom" constant="5" id="e1z-Y1-g9w"/>
+                            <constraint firstItem="cfE-UH-zrd" firstAttribute="top" secondItem="cPt-8r-khV" secondAttribute="bottom" constant="8" id="fQ3-Ff-SVy"/>
+                            <constraint firstItem="pFR-dY-206" firstAttribute="leading" secondItem="m5d-M1-Z5d" secondAttribute="leadingMargin" constant="21" id="hBI-tH-7gF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TdC-Q8-LnS" secondAttribute="trailing" constant="21" id="hQH-MV-P6q"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="e2j-hO-GQC" secondAttribute="trailing" constant="21" id="nSu-eo-GD3"/>
+                            <constraint firstItem="BpQ-Fe-0Js" firstAttribute="top" secondItem="IV4-of-u6o" secondAttribute="bottom" constant="50" id="nyg-bT-uxT"/>
+                            <constraint firstItem="bje-zo-UK4" firstAttribute="top" secondItem="cPt-8r-khV" secondAttribute="bottom" constant="23" id="oUr-2d-36v"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qcB-bb-nb9" secondAttribute="trailing" constant="21" id="qtE-dd-9Kf"/>
+                            <constraint firstItem="cPt-8r-khV" firstAttribute="leading" secondItem="m5d-M1-Z5d" secondAttribute="leadingMargin" id="xJg-Pk-4JV"/>
+                            <constraint firstItem="qcB-bb-nb9" firstAttribute="leading" secondItem="m5d-M1-Z5d" secondAttribute="leadingMargin" constant="21" id="z1N-5x-gc9"/>
+                        </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Profile" image="id-card" id="w7h-MQ-FdU"/>
                     <navigationItem key="navigationItem" title="Profile" id="bPU-68-vMK">
                         <barButtonItem key="leftBarButtonItem" title="Log Out" id="uak-ch-Abv">
                             <connections>
@@ -93,6 +129,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="aboutMeLabel" destination="e2j-hO-GQC" id="XsL-O2-7K7"/>
                         <outlet property="nameLabel" destination="qcB-bb-nb9" id="SF9-bL-ch5"/>
@@ -118,14 +155,14 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Edit Username:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHC-ly-row">
                                 <rect key="frame" x="58" y="220" width="259" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="25"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Edit About Me:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EfZ-rf-jNc">
                                 <rect key="frame" x="58" y="320" width="259" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="25"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -133,27 +170,27 @@
                                 <rect key="frame" x="58" y="166" width="259" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="New Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b6D-pu-Ajo">
                                 <rect key="frame" x="58" y="259" width="259" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="New About Me" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rkp-1C-cBk">
                                 <rect key="frame" x="58" y="357" width="259" height="142"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Edit Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oiB-0S-KYC">
                                 <rect key="frame" x="58" y="126" width="259" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="25"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -196,4 +233,7 @@
             <point key="canvasLocation" x="-410.39999999999998" y="-12.143928035982009"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="id-card" width="30" height="30"/>
+    </resources>
 </document>

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,17 +23,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mhc-em-32I">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="323"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="304"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="News" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y00-bv-GU5">
-                                        <rect key="frame" x="56" y="93" width="262" height="137"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="100"/>
+                                        <rect key="frame" x="56" y="93" width="262" height="118"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="100"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign up to read and save news articles with your friends, your debate team, or anyone else!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lqQ-rz-Enp">
-                                        <rect key="frame" x="4" y="205" width="366" height="65"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                        <rect key="frame" x="4" y="205" width="366" height="46"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -49,10 +50,9 @@
                                     <constraint firstItem="y00-bv-GU5" firstAttribute="top" secondItem="mhc-em-32I" secondAttribute="top" constant="93" id="wTp-yD-cYb"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iYj-Tx-KdJ">
-                                <rect key="frame" x="91" y="333" width="193" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="24"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iYj-Tx-KdJ">
+                                <rect key="frame" x="91" y="314" width="193" height="40"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
                                 <state key="normal" title="Sign up or Log In">
                                     <color key="titleColor" red="0.45323901519999998" green="0.60774975769999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -63,9 +63,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="iYj-Tx-KdJ" firstAttribute="leading" secondItem="h3N-SB-2qV" secondAttribute="leadingMargin" constant="75" id="4U7-NM-RrV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="iYj-Tx-KdJ" secondAttribute="trailing" constant="75" id="90E-wh-7zS"/>
                             <constraint firstItem="mhc-em-32I" firstAttribute="top" secondItem="h3N-SB-2qV" secondAttribute="top" id="BPN-WW-cda"/>
                             <constraint firstItem="mhc-em-32I" firstAttribute="leading" secondItem="h3N-SB-2qV" secondAttribute="leading" id="RWk-FY-44X"/>
                             <constraint firstAttribute="trailing" secondItem="mhc-em-32I" secondAttribute="trailing" id="Re0-FN-StJ"/>
+                            <constraint firstItem="iYj-Tx-KdJ" firstAttribute="top" secondItem="mhc-em-32I" secondAttribute="bottom" constant="10" id="pU1-lJ-gaO"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="2Gd-hX-rN4"/>
@@ -90,61 +93,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="laJ-5K-ka3">
-                                <rect key="frame" x="53" y="95" width="116" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="22"/>
-                                <color key="textColor" red="0.45323901519999998" green="0.60774975769999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQu-Wh-uQA">
-                                <rect key="frame" x="53" y="180" width="268" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="22"/>
-                                <color key="textColor" red="0.45323901519999998" green="0.60774975769999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sZs-EW-kIe">
-                                <rect key="frame" x="53" y="126" width="268" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sZs-EW-kIe">
+                                <rect key="frame" x="41" y="149.5" width="292" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="87h-N8-cnl"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="About Me:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQx-Dz-49q">
-                                <rect key="frame" x="53" y="270" width="268" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="22"/>
-                                <color key="textColor" red="0.45323901519999998" green="0.60774975769999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VLi-tn-XCo">
-                                <rect key="frame" x="53" y="211" width="268" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VLi-tn-XCo">
+                                <rect key="frame" x="41" y="108.5" width="292" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="o95-mi-qt8"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="About Me" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hSs-va-wmp">
-                                <rect key="frame" x="53" y="301" width="268" height="73"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="About Me" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hSs-va-wmp">
+                                <rect key="frame" x="41" y="190.5" width="292" height="73"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="73" id="aZf-Sg-40Z"/>
+                                    <constraint firstAttribute="height" constant="73" id="lnX-LZ-zWM"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sign Up as a New User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N8T-1V-lhj">
-                                <rect key="frame" x="41" y="38" width="292" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="27"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up as a New User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N8T-1V-lhj">
+                                <rect key="frame" x="41" y="69" width="292" height="31.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="27"/>
                                 <color key="textColor" red="0.45323901519999998" green="0.60774975769999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aab-cL-QyG">
-                                <rect key="frame" x="53" y="397" width="268" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aab-cL-QyG">
+                                <rect key="frame" x="41" y="271.5" width="292" height="32"/>
                                 <color key="backgroundColor" red="0.45323901519999998" green="0.60774975769999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                <state key="normal" title="Next">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="GCm-gj-w0m"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="Get Started">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -154,6 +144,24 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="sZs-EW-kIe" firstAttribute="top" secondItem="VLi-tn-XCo" secondAttribute="bottom" constant="9" id="3Ko-01-LVL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="aab-cL-QyG" secondAttribute="trailing" constant="26" id="5Fp-zd-SGY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="VLi-tn-XCo" secondAttribute="trailing" constant="26" id="8J6-Vp-2zs"/>
+                            <constraint firstItem="N8T-1V-lhj" firstAttribute="top" secondItem="0na-vj-gyl" secondAttribute="bottom" constant="49" id="Acu-7C-T6D"/>
+                            <constraint firstItem="hSs-va-wmp" firstAttribute="top" secondItem="sZs-EW-kIe" secondAttribute="bottom" constant="9" id="EZo-VT-AMa"/>
+                            <constraint firstItem="aab-cL-QyG" firstAttribute="leading" secondItem="oAx-Vt-Hhx" secondAttribute="leadingMargin" constant="25" id="FtW-Hp-QMn"/>
+                            <constraint firstItem="VLi-tn-XCo" firstAttribute="top" secondItem="N8T-1V-lhj" secondAttribute="bottom" constant="8" id="GA2-Zc-Rsv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="N8T-1V-lhj" secondAttribute="trailing" constant="26" id="Ho1-11-7ZR"/>
+                            <constraint firstItem="hSs-va-wmp" firstAttribute="top" secondItem="sZs-EW-kIe" secondAttribute="bottom" constant="9" id="I1X-rs-V0y"/>
+                            <constraint firstItem="VLi-tn-XCo" firstAttribute="leading" secondItem="oAx-Vt-Hhx" secondAttribute="leadingMargin" constant="25" id="KWD-Lg-5eq"/>
+                            <constraint firstItem="aab-cL-QyG" firstAttribute="top" secondItem="hSs-va-wmp" secondAttribute="bottom" constant="8" id="a9a-aS-xvZ"/>
+                            <constraint firstItem="hSs-va-wmp" firstAttribute="leading" secondItem="oAx-Vt-Hhx" secondAttribute="leadingMargin" constant="25" id="bEx-UA-kmt"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hSs-va-wmp" secondAttribute="trailing" constant="26" id="c9i-4e-dbB"/>
+                            <constraint firstItem="sZs-EW-kIe" firstAttribute="leading" secondItem="oAx-Vt-Hhx" secondAttribute="leadingMargin" constant="25" id="eYf-s6-s5k"/>
+                            <constraint firstItem="N8T-1V-lhj" firstAttribute="leading" secondItem="oAx-Vt-Hhx" secondAttribute="leadingMargin" constant="25" id="kS1-qP-kJG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sZs-EW-kIe" secondAttribute="trailing" constant="26" id="nDt-hu-5G3"/>
+                        </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="w1z-yY-FSS" appends="YES" id="APl-Re-ZOz"/>
                         </connections>
@@ -188,7 +196,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="PAU-Me-A0R" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BA4-Mj-Pc6">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="BA4-Mj-Pc6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

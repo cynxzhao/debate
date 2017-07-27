@@ -236,12 +236,7 @@ class AllNewsTableViewController: UITableViewController {
          for bbc in BBCData! {
          let bbcc = News(otherjson: bbc)
          self.news.append(bbcc)
-         }
-         
-         //        for nyt in NData {
-         //            let nytt = News(nytjson: nyt)
-         //            self.news.append(nytt)
-         //        } */
+         } */
         
         
 /*        var x = 0
@@ -264,8 +259,8 @@ class AllNewsTableViewController: UITableViewController {
             var x = 0
             
             for n in self.news {
-                if n.date == "" {
-                 self.news.remove(at: x)
+                if n.date.characters.count != 20 {
+                    self.news.remove(at: x)
                 } else {
                     n.date2 = n.date.toDateTime()
                     x += 1
@@ -309,8 +304,8 @@ class AllNewsTableViewController: UITableViewController {
         let new = news[row]
         
         cell.titleLabel.text = new.title
-        cell.dateLabel.text = new.date
-        cell.urlLabel.text = new.url
+        cell.dateLabel.text = new.date2!.toString1(dateFormat: "dd-MMM-yyyy HH:mm:ss")
+//        cell.urlLabel.text = new.url
         
         return cell
     }
@@ -320,7 +315,7 @@ class AllNewsTableViewController: UITableViewController {
         //news = []
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 110
+        return 140
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -416,13 +411,15 @@ extension String
         return dateFromString
     }
     
-    //    func toDateNYT() -> Date
-    //    {
-    //        let dateFormatter = DateFormatter()
-    //        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'+'SSSS'Z'"
-    //    
-    //        let dateFromString : Date = dateFormatter.date(from: self)! as Date
-    //        return dateFromString
-    //
-    //    }
+}
+
+extension Date
+{
+    func toString1( dateFormat format  : String ) -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        return dateFormatter.string(from: self)
+    }
+    
 }

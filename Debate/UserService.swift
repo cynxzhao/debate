@@ -54,27 +54,92 @@ struct UserService {
         })
     }
     
-    static func leaveGroup(groupID: String, username: String) {
-  
-        
-            let ref = Database.database().reference().child("groups").child(groupID).child("users")
-            
-            ref.queryEqual(toValue: username).observe(.childAdded, with: { (snapshot) in
-                
-                snapshot.ref.removeValue(completionBlock: { (error, reference) in
-                    if error != nil {
-                        print("There has been an error:\(error)")
-                    }
-                })
-                
-            })
             
 //        Database.database().reference().child("groups").child(firstTree).child("users")[childIWantToRemove].removeValueWithCompletionBlock { (error, ref) in
 //            if error != nil {
 //                print("error \(error)")
 //            }
 //       }
+
+
+    static func leave(groupID: String, username: String) {
+        
+        var allGroups = [String]()
+        let ref1 = Database.database().reference().child("users").child(User.current.uid).child("groups")
+        ref1.observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let snapshot = snapshot.children.allObjects as? [DataSnapshot]
+                else { return }
+            for snap in snapshot {
+                allGroups.append((snap.value as? String)!)
+            }
+            
+            var index = allGroups.index(of: groupID)
+            allGroups.remove(at: index!)
+            ref1.setValue(allGroups)
+            
+            if allGroups == [] {
+                allGroups.append("abc")
+                ref1.setValue(allGroups)
+            }
+            
+            //            NotificationCenter.default.post(name: Notification.Name(rawValue: "left"), object: self)
+            
+        })
+        
+        var allUsers = [String]()
+        let ref = Database.database().reference().child("groups").child(groupID).child("users")
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let snapshot = snapshot.children.allObjects as? [DataSnapshot]
+                else { return }
+            for snap in snapshot {
+                allUsers.append((snap.value as? String)!)
+            }
+            
+        var index = allUsers.index(of: username)
+        allUsers.remove(at: index!)
+            ref.setValue(allUsers)
+
+            if allUsers == [] {
+              Database.database().reference().child("groups").child(groupID).removeValue()
+            }
+        })
     }
-
-
+    
+    static func updateUsername(new: String, completion: @escaping (Int?) -> Void) {
+        let oldName = User.current.username
+        let ref2 = Database.database().reference().child("users").child(User.current.uid).child("groups")
+        ref2.observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let snapshot = snapshot.children.allObjects as? [DataSnapshot]
+                else { return }
+            for group in snapshot {
+                
+                if group.value as? String != "abc" {
+                let ref3 = Database.database().reference().child("groups").child((group.value as? String)!).child("users")
+                ref3.observeSingleEvent(of: .value, with: { (users) in
+                    guard var users = users.children.allObjects as? [DataSnapshot]
+                        else {return}
+                    var allUsers = [String]()
+                    for user in users {
+                        allUsers.append((user.value as? String)!)
+                    }
+                    var index = allUsers.index(of: oldName)
+                    allUsers[index!] = new
+                    ref3.setValue(allUsers)
+                    completion(index)
+                })
+                }
+            }
+        })
+    }
+    
+    static func show(forUID uid: String, completion: @escaping (User?) -> Void) {
+        let ref = Database.database().reference().child("users").child(uid)
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let user = User(snapshot: snapshot) else {
+                return completion(nil)
+            }
+            
+            completion(user)
+        })
+    }
 }

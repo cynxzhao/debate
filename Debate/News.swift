@@ -18,6 +18,7 @@ class News: Comparable {
     var tags: [String]?
     var date2: Date?
     var id: String?
+    var sender: String?
     
     init(title: String, date: String, url: String)
     {
@@ -31,13 +32,15 @@ class News: Comparable {
         let title = dict["title"] as? String,
         let date = dict["date"] as? String,
         let url = dict["url"] as? String,
-        let tags = dict["tags"] as? [String]
+        let tags = dict["tags"] as? [String],
+        let sender = dict["sender"] as? String
             else {return nil}
         
         self.title = title
         self.date = date
         self.url = url
         self.tags = tags
+        self.sender = sender
     }
     
     init?(snapshot1: DataSnapshot) {

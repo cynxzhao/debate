@@ -51,33 +51,25 @@ class EditProfileViewController : UIViewController {
 //        })
         
         if usernameTextField.text != "" {
-            let userAttr = ["username": usernameTextField.text]
-            ref.updateChildValues(userAttr)
-            User.current.username = usernameTextField.text!
-            
-                let ref2 = Database.database().reference().child("users").child(User.current.uid).child("groups")
-                ref2.observe(.value, with: { (snapshot) in
-                    guard let snapshot = snapshot.children.allObjects as? [DataSnapshot]
-                        else { return }
-                    for group in snapshot {
-                        print(group.value as? String)
-                         let ref3 = Database.database().reference().child("groups").child((group.value as? String)!).child("users")
-                        ref3.observe(.value, with: { (users) in
-                            guard var users = users.children.allObjects as? [String]
-                                else {return}
-                            for user in users {
-                                var index = 0
-
-                                if user == User.current.username {
-                                users[index] = User.current.username
-                                index = 0
-                                }
-                                index += 1
-                            }
-                        })
-                    }
-//                })
-//
+            var usernameTaken = false
+            let ref1 = Database.database().reference()
+            ref1.child("users").queryOrdered(byChild: "username").queryEqual(toValue: usernameTextField.text).observeSingleEvent(of: .value, with: { snapshot in
+                if snapshot.exists(){
+                    print("it exists")
+                    usernameTaken = true
+                    let alert = UIAlertController(title: "Error", message: "Username already exists, so it could not be updated", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }else{
+                    usernameTaken = false
+                    let userAttr = ["username": self.usernameTextField.text]
+                    ref.updateChildValues(userAttr)
+                    
+                    UserService.updateUsername(new: self.usernameTextField.text!, completion: { (all) in
+                        User.current.username = self.usernameTextField.text!
+                    })
+                    
+                }
             })
         }
         

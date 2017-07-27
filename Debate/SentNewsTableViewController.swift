@@ -11,6 +11,7 @@ import FirebaseDatabase
 
 class SentNewsTableViewController: UITableViewController {
 
+    
     var group : Group?
     var news = [News]()
     var filteredNews = [News]()
@@ -22,7 +23,7 @@ class SentNewsTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         let ref = Database.database().reference().child("groups").child(group!.id).child("news")
-        ref.observe(.value, with: { (snapshot) in
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
             guard let snapshot = snapshot.children.allObjects as? [DataSnapshot]
                 else { return }
             for snap in snapshot {
@@ -30,6 +31,10 @@ class SentNewsTableViewController: UITableViewController {
             self.news.append(new!)
 
             }
+            for n in self.news {
+                n.date2 = n.date.toDateTime1()
+            }
+            self.news.reverse()
             self.tableView.reloadData()
 
         })
@@ -42,13 +47,12 @@ class SentNewsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         searchController.searchResultsUpdater = self as! UISearchResultsUpdating
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
 
-
+        self.navigationItem.title = group!.groupName
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -69,9 +73,13 @@ class SentNewsTableViewController: UITableViewController {
 
             }
         
-        
+        filteredNews.reverse()
         
         tableView.reloadData()
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 140
     }
     
     override func didReceiveMemoryWarning() {
@@ -100,13 +108,20 @@ class SentNewsTableViewController: UITableViewController {
         }
         
         cell.titleLabel.text = new.title
-        cell.dateLabel.text = new.date
+        cell.dateLabel.text = new.date2!.toString(dateFormat: "dd-MMM-yyyy HH:mm:ss")
         var allTags = ""
         for tag in new.tags ?? [] {
             allTags += "\(tag) "
         }
         cell.tagsLabel.text = allTags
         
+        let ref = Database.database().reference().child("users").child(new.sender!).child("username")
+        
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            cell.senderLabel.text = snapshot.value as? String
+
+        })
+    
         return cell
     }
     
@@ -200,4 +215,34 @@ extension SentNewsTableViewController : UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(searchText: searchController.searchBar.text!)
     }
+}
+
+extension String
+{
+    func toDateTime1() -> Date
+    {
+        //Create Date Formatter
+        let dateFormatter = DateFormatter()
+        
+        //Specify Format of String to Parse
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+        
+        //Parse into NSDate
+        let dateFromString : Date = dateFormatter.date(from: self)! as Date
+        
+        //Return Parsed Date
+        return dateFromString
+    }
+    
+}
+
+extension Date
+{
+    func toString( dateFormat format  : String ) -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        return dateFormatter.string(from: self)
+    }
+    
 }

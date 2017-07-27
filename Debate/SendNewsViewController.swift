@@ -50,7 +50,7 @@ class SendNewsViewController: UIViewController {
             if let user = User(snapshot: snapshot) {
                 groupIDs = user.groups!
                 let ref1 = Database.database().reference().child("groups")
-                ref1.observe(.value, with: { (snapshot) in
+                ref1.observeSingleEvent(of: .value, with: { (snapshot) in
                     guard let snapshot = snapshot.children.allObjects as? [DataSnapshot]
                         else { return }
                     //print(snapshot[0])
@@ -76,18 +76,22 @@ class SendNewsViewController: UIViewController {
 
 
     @IBAction func newsSent(_ sender: UIButton) {
-        if tagsTextField.text == "" {
-
-            let alert = UIAlertController(title: "Error", message: "Please add tags for search purposes", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-
-        }
-        else if group == nil {
-
+        if group == nil {
+            
             let alert = UIAlertController(title: "Error", message: "Please choose a group", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
+        }
+        else if tagsTextField.text == "" {
+
+/*            let alert = UIAlertController(title: "Error", message: "Please add tags for search purposes", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil) */
+            
+            NewsService.create(group: group!, title: news!.title, date: news!.date, url: news!.url, tags: [" "], sender: User.current, completion: { (news) in
+                guard let news = news else { return }
+            })
+            self.performSegue(withIdentifier: "toAll", sender: nil)
 
 
         }
@@ -96,7 +100,7 @@ class SendNewsViewController: UIViewController {
             let tags: String = " " + tagsTextField.text!
             tagsArr = tags.components(separatedBy: " #")
             tagsArr.remove(at: 0)
-            NewsService.create(group: group!, title: news!.title, date: news!.date, url: news!.url, tags: tagsArr, completion: { (news) in
+            NewsService.create(group: group!, title: news!.title, date: news!.date, url: news!.url, tags: tagsArr, sender: User.current, completion: { (news) in
                 guard let news = news else { return }
             })
             

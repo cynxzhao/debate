@@ -15,11 +15,12 @@ import Alamofire
 import SwiftyJSON
 
 struct NewsService {
-    static func create(group: Group, title: String, date: String, url: String, tags: [String], completion: @escaping (News?) -> Void) {
+    static func create(group: Group, title: String, date: String, url: String, tags: [String], sender: User, completion: @escaping (News?) -> Void) {
         let newsAttr = ["title": title,
                         "date": date,
                         "url" : url,
-                        "tags": tags] as [String : Any]
+                        "tags": tags,
+                        "sender": sender.uid] as [String : Any]
 
         
     let ref = Database.database().reference().child("groups").child(group.id).child("news").childByAutoId()
@@ -45,20 +46,17 @@ struct NewsService {
                         "url": url] as [String: Any]
         
         let ref = Database.database().reference().child("news").child(userID).childByAutoId()
-        print("first")
         ref.setValue(newsAttr) { (error, ref1) in
             if let error = error {
                 assertionFailure(error.localizedDescription)
                 return completion(nil)
             } else {
-                print("second")
                 let newsAttr2 = ["title" : title,
                                   "date": date,
                                   "url" : url,
                                   "id" : ref1.key] as [String : Any]
                 //let ref2 = Database.database().reference().child("news").child(userID).child(ref.key)
                 ref1.setValue(newsAttr2)
-                print("third")
                 ref1.observeSingleEvent(of: .value, with: { (snapshot) in
                     let news = News(snapshot1: snapshot)
                     completion(news)

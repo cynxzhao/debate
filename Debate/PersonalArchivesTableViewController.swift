@@ -50,7 +50,6 @@ class PersonalArchivesTableViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("l")
         news = []
         let ref = Database.database().reference().child("news").child(User.current.uid)
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -61,6 +60,10 @@ class PersonalArchivesTableViewController: UITableViewController {
                 self.news.append(self.new!)
                 
             }
+            for n in self.news {
+                n.date2 = n.date.toDateTime2()
+            }
+            
             self.tableView.reloadData()
             
         })
@@ -94,8 +97,8 @@ class PersonalArchivesTableViewController: UITableViewController {
         }
         
         cell.titleLabel.text = new.title
-        cell.dateLabel.text = new.date
-        cell.urlLabel.text = new.url
+        cell.dateLabel.text = new.date2!.toString2(dateFormat: "dd-MMM-yyyy HH:mm:ss")
+//        cell.urlLabel.text = new.url
         
         return cell
     }
@@ -178,4 +181,34 @@ extension PersonalArchivesTableViewController : UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(searchText: searchController.searchBar.text!)
     }
+}
+
+extension String
+{
+    func toDateTime2() -> Date
+    {
+        //Create Date Formatter
+        let dateFormatter = DateFormatter()
+        
+        //Specify Format of String to Parse
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+        
+        //Parse into NSDate
+        let dateFromString : Date = dateFormatter.date(from: self)! as Date
+        
+        //Return Parsed Date
+        return dateFromString
+    }
+    
+}
+
+extension Date
+{
+    func toString2( dateFormat format  : String ) -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        return dateFormatter.string(from: self)
+    }
+    
 }

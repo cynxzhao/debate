@@ -29,7 +29,6 @@ class CreateViewController: UIViewController {
     @IBAction func groupCreated(_ sender: UIButton) {
         guard let firUser = Auth.auth().currentUser,
             let groupName = groupNameTextField.text,
-            !groupName.isEmpty,
             let users = users
             else { return }
         
@@ -42,7 +41,12 @@ class CreateViewController: UIViewController {
                 let alert = UIAlertController(title: "Error", message: "Group name already exists, please choose a new one", preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
-            }else{
+            }else if groupName == "" {
+                let alert = UIAlertController(title: "Error", message: "Please enter a group name", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+
+            } else {
                 groupNameTaken = false
                 GroupService.create(firUser, groupName: groupName, users: users) { (group1) in
                     guard let group = group1 else { return }
@@ -133,10 +137,19 @@ extension CreateViewController: UITableViewDelegate {
         if editingStyle == .delete {
             let row = indexPath.row
             let user = users?[row]
+            if user != User.current.username {
             userSet.remove(user!)
             users!.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.automatic)
+            }
+            else {
+                let alert = UIAlertController(title: "Error", message: "You cannot delete yourself from the group", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+            }
+
         }
-    }
+           }
 }
 

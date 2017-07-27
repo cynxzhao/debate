@@ -36,9 +36,18 @@ class ProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        nameLabel.text = User.current.name
-        usernameLabel.text = User.current.username
-        aboutMeLabel.text = User.current.aboutMe
+        
+        UserService.show(forUID: User.current.uid) { (user) in
+
+            if let user = user {
+                // handle existing user
+                User.setCurrent(user, writeToUserDefaults: true)
+                
+        self.nameLabel.text = User.current.name
+        self.usernameLabel.text = User.current.username
+        self.aboutMeLabel.text = User.current.aboutMe
+            }
+        }
     }
     
     override func viewDidLoad() {

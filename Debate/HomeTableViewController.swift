@@ -30,7 +30,7 @@ class HomeTableViewController: UITableViewController {
             if let user = User(snapshot: snapshot) {
                 groupIDs = user.groups!
                 let ref1 = Database.database().reference().child("groups")
-                ref1.observe(.value, with: { (snapshot) in
+                ref1.observeSingleEvent(of: .value, with: { (snapshot) in
                     guard let snapshot = snapshot.children.allObjects as? [DataSnapshot]
                         else { return }
                     //print(snapshot[0])
@@ -54,11 +54,12 @@ class HomeTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(HomeTableViewController.actOnViewController), name: NSNotification.Name(rawValue: "uploaded"), object: nil)
+ //       NotificationCenter.default.addObserver(self, selector: #selector(HomeTableViewController.actOnViewController), name: NSNotification.Name(rawValue: "left"), object: nil)
 
     }
     
     @IBAction func unwindToHomeViewController(_ segue: UIStoryboardSegue) {
-        
+        //actOnViewController()
     }
     
 //    override func viewDidLoad() {
